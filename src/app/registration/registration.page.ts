@@ -132,7 +132,7 @@ export class RegistrationPage implements OnInit {
           });
   
           
-            this.router.navigateByUrl('/serviceprovider');
+            this.router.navigateByUrl('/pabs');
           
          }
          else{

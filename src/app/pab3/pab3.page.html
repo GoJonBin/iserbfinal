@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      User Account
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-card class="welcome-card">
+  <ion-item (click)="logouts()">
+    
+    <ion-label>Log out</ion-label>
+    
+  </ion-item>
+
+  <!-- <ion-item>
+    <ion-icon name="card" slot="start"></ion-icon>
+    <ion-label>Cards</ion-label>
+    <ion-button fill="outline" slot="end">View</ion-button>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="cash" slot="start"></ion-icon>
+    <ion-label>Cash In</ion-label>
+    <ion-button fill="outline" slot="end">View</ion-button>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="medal" slot="start"></ion-icon>
+    <ion-label>Rewards</ion-label>
+    <ion-button fill="outline" slot="end">View</ion-button>
+  </ion-item> -->
+</ion-card>
+
+
+    <ion-content *ngIf='userReady'>
+        <ion-card>
+          <ion-img [src]="user.picture"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{user.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{user.email}}</p>
+          </ion-card-content>
+          <!--<ion-button expand="block" (click)="doFbLogout()">Log Out FB</ion-button>
+          <ion-button expand="block" (click)="doGoogleLogout()">Log Out Google</ion-button>-->
+        </ion-card>
+        <ion-card class="welcome-card">
+          <ion-item>
+            <ion-icon name="mail" slot="start"></ion-icon>
+            <ion-label>Messages</ion-label>
+            <ion-button fill="outline" slot="end" class="textBold">></ion-button>
+          </ion-item>
+      
+          <ion-item>
+            <ion-icon name="cog" slot="start"></ion-icon>
+            <ion-label>Settings</ion-label>
+            <ion-button fill="outline" slot="end" class="textBold">></ion-button>
+          </ion-item>
+    
+        </ion-card>
+
+        <ion-card class="welcome-card">
+          <ion-item (click)="doFbLogout()">
+            <ion-icon name="exit" slot="start"></ion-icon>
+            <ion-label>Logout</ion-label>
+            <ion-button fill="outline" slot="end" class="textBold" routerLink="/">-></ion-button>
+          </ion-item>
+          </ion-card>
+      </ion-content>

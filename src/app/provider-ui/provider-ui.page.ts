@@ -48,11 +48,11 @@ console.log(this.Subject);
    }
    else if(Subject=="English")
    {
-     this.showProfNava=false;
+     //this.showProfNava=false;
      this.showProfJoed=true;
    }
    else{
-     this.showProfNava=false;
+     //this.showProfNava=false;
      this.showProfJoed=false;
    }
   }

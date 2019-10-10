@@ -1,40 +1,49 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import { PabsPage } from './pabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
-    component: TabsPage,
+    path: 'pabs',
+    component: PabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'pab1',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../pab1/pab1.module#Pab1PageModule'
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'pab2',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../pab2/pab2.module#Pab2PageModule'
+          }
+        ]
+      },
+      {
+        path: 'pab3',
+        children: [
+          {
+            path: '',
+            loadChildren: '../pab3/pab3.module#Pab3PageModule'
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/pabs/pab1',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tabs/tab1',
+    redirectTo: '/pabs/pabs/pab1',
     pathMatch: 'full'
   }
 ];
@@ -45,4 +54,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class PabsPageRoutingModule {}
