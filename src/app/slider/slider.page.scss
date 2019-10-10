@@ -1,0 +1,80 @@
+
+.login-content{
+  --background: -webkit-linear-gradient(top, #2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+   
+}
+  .bg-class{
+    --background: #2989d8; /* Old browsers */
+    --background: -moz-linear-gradient(top, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+    --background: -webkit-linear-gradient(top, #2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+    --background: linear-gradient(to bottom, #2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+  
+  
+  :root {
+    --ion-safe-area-top: 20px;
+    --ion-safe-area-bottom: 22px;
+  }
+  
+  
+  .swiper-slide {
+    display: block;
+  }
+
+  ion-slide > h2 {
+    margin-top: 2.8rem;
+  }
+
+  ion-slide > img {
+    max-height: 50%;  
+    max-width: 60%;
+    margin: 36px 0;
+  }
+
+
+//   #gear{
+//     animation-name: ckw;
+//     animation-duration: 5s;
+//     animation-iteration-count: infinite;
+//     transform-origin: 50% 50%;
+//     display: inline-block;
+//     animation-timing-function: linear;
+//     position: absolute;
+// }
+// #gear2{
+//     animation-name: ccw;
+//     animation-duration: 5s;
+//     animation-iteration-count: infinite;
+//     transform-origin: 50% 50%;
+//     animation-timing-function: linear;
+//     position: absolute;
+  
+// }
+// #gear3{
+//   animation-name: ccw;
+//   animation-duration: 5s;
+//   animation-iteration-count: infinite;
+//   transform-origin: 50% 50%;
+//   animation-timing-function: linear;
+//   position: absolute;
+
+// }
+// @keyframes ckw {
+//     0% {
+//         transform: rotate(0deg);
+//     }
+//     100% {
+//         transform: rotate(360deg);
+//     }
+// }
+// @keyframes ccw {
+//     0% {
+//         transform: rotate(360deg);
+//     }
+//     100% {
+//         transform: rotate(0deg);
+//     }
+// }
+
+
+
+  

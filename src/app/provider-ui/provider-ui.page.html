@@ -1,0 +1,74 @@
+<style>
+    :root {
+      --ion-safe-area-top: 20px;
+      --ion-safe-area-bottom: 22px;
+    }
+  </style>
+<ion-header translucent>
+    <ion-toolbar>
+      <ion-title>Education</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content fullscreen>
+    <ion-list>
+      <ion-list-header>
+        List Of Providers
+      </ion-list-header>
+    <ion-item>
+      <ion-label>
+        Select Subject
+      </ion-label>
+      <ion-select placeholder="Subject" interface="action-sheet" [(ngModel)]="Subject" (ionChange)="showSelectedSubject(Subject)">
+        <ion-select-option value="Math">
+          Math
+        </ion-select-option>
+        <ion-select-option value="English">
+          English
+        </ion-select-option>
+        <ion-select-option value="Filipino">
+          Filipino
+        </ion-select-option>
+        <ion-select-option value="Makabayan">
+          Makabayan
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div *ngIf="showProfNava">
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="assets/img/navapogi.jpg">
+        </ion-avatar>
+        <ion-label>
+          <h2>Name: Dennis Nava</h2>
+          <h3>Occupation: Teacher</h3>
+          <h3>Rate:<ion-icon name="cash"></ion-icon> P50,000</h3>
+          <p>Rating: <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon></p>
+        <p style="color: blue" (click)="showAlert()">More Info</p>
+        <p>Status: </p><p style="color:red" *ngIf="userNava.status=='Pending'">{{userNava.status}}</p>
+        <p style="color:green" *ngIf="userNava.status == 'Available'">{{userNava.status}}</p>
+        <ion-button (click)="hireNava()">Hire</ion-button>
+        </ion-label>
+      </ion-item>
+
+    </div>
+    <div *ngIf="showProfJoed">
+      <ion-item>
+          <ion-avatar slot="start">
+            <img src="assets/img/joed.jpeg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Name: Joed Lopez</h2>
+            <h3>Occupation: Teacher</h3>
+            <h3>Rate:<ion-icon name="cash"></ion-icon> P10,000</h3>
+            <p>Rating: <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
+            <p style="color: blue" (click)="showAlert()">More Info</p>
+            <p>Status: </p><p style="color:red" *ngIf="userJoed.status=='Pending'">{{userJoed.status}}</p>
+            <p style="color:green" *ngIf="userJoed.status == 'Available'">{{userJoed.status}}</p>
+            <ion-button (click)="hireJoed()">Hire</ion-button>
+          </ion-label>
+        </ion-item>
+        </div>
+    </ion-list>
+  </ion-content>

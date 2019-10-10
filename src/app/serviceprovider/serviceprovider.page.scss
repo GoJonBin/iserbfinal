@@ -1,0 +1,43 @@
+.welcome-card img {
+    max-height: 35vh;
+    overflow: hidden;
+  }
+  #map_canvas{
+    height:90%;
+  }
+  .address-text{
+    margin: 0%;
+    text-align: center;
+    font-size: 17px;
+    color: black;
+  }
+  .larger{
+    margin: 0%;
+    font-size: 25px;
+  }
+  .blues{
+    width: 100%;
+    margin: 0%;
+    background-color: white;
+  }
+  
+  .centers{
+    margin:auto;
+    text-align: center;
+  }
+  
+  .chubby{
+    font-weight: bold;
+  }
+  
+  .noScroll {
+    overflow: hidden;
+    }
+
+    .my-custom-menu {
+        --width: 500px;
+      }
+    
+  
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+  

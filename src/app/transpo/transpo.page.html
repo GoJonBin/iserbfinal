@@ -1,0 +1,15 @@
+
+<ion-content>
+
+        <!-- <div id="map" style="width:100%; height:100%;"></div> -->
+        <div id='map'></div>
+        </ion-content>
+        <ion-footer>
+            <div class="centers" [hidden]="isenabled">
+                <ion-label class="chubby" >₱ 350.00 </ion-label>|| <ion-label class="chubby">30 mins.<!--{{dataFromService}}--></ion-label><br>
+                <ion-button (click)="confirmBooking()">CONFIRM</ion-button>
+                <ion-button color="danger" (click)="cancel()">CANCEL</ion-button>
+            </div>
+            <ion-button color="success" expand="block" (click)="cancelBooking()">BOOK NOW</ion-button>
+            <ion-button name="back" id="back" color="tertiary" expand="block" (click)="push()">BACK</ion-button>
+        </ion-footer>
