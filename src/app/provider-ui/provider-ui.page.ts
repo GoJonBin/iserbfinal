@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import axios from 'axios';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-provider-ui',
@@ -9,7 +10,7 @@ import axios from 'axios';
 })
 export class ProviderUIPage implements OnInit {
   public arrayTeacher: any=[];
-  constructor(public alertController: AlertController) { }
+  constructor(public alertController: AlertController, private router: Router) { }
   Subject: any;
   showProfMath: any;
   showProfJoed: any;
@@ -60,35 +61,11 @@ console.log(this.Subject);
   {
   
   }
-  hireNava()
+  hireButton()
   {
- 
+ this.presentAlert2();
   }
- 
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Hire this person?',
-      message: 'Are you sure you want to hire this person?.',
-      buttons: [
-        {
-          text:'NO',
-          handler: ()=>{
-            
-          }
-        },
-        {
-          text: 'YES',
-          handler: () => {
-            this.userJoed.status="Pending";
-            this.userJoed.statusColorJoed="color:red;";
-          }
-        }
-   
-        ]
-    });
 
-    await alert.present();
-  }
 
   async presentAlert2() {
     const alert = await this.alertController.create({
@@ -104,8 +81,8 @@ console.log(this.Subject);
         {
           text: 'YES',
           handler: () => {
-            this.userNava.status="Pending";
-            this.userNava.statusColorNava="color:red";
+            this.arrayTeacher[0].status="Pending";
+            this.router.navigateByUrl('/chat-room');
           }
         }
      
