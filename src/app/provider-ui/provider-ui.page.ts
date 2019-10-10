@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-
+import axios from 'axios';
 
 @Component({
   selector: 'app-provider-ui',
@@ -8,31 +8,32 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./provider-ui.page.scss'],
 })
 export class ProviderUIPage implements OnInit {
-
+  public arrayTeacher: any=[];
   constructor(public alertController: AlertController) { }
   Subject: any;
-  showProfNava: any;
+  showProfMath: any;
   showProfJoed: any;
   
  
  
-  status = "Ready";
- userNava = {
-   status:"Available",
-   name:"Nava",
-   statusColorNava: "color:red;"
- }
- userJoed = 
- {
-    status: "Available",
-    name:"Joed",
-    statusColorJoed: "color:red;"
- }
+ 
   ngOnInit() {
     
-
+   
   }
 
+  async getProviderType(){
+    try{
+      const response = await axios.get(' http://nathdaaco123-001-site1.ctempurl.com/api/Provider/ServiceType?ServiceType=5');
+      console.log(response);
+      for(let x = 0; x< response.data.length; x++) {
+        this.arrayTeacher.push({'name':response.data[x].Firstname +' '+ response.data[x].Lastname,'rate':response.data[x].Rate,'status':response.data[x].Status});
+      }      
+      console.log(this.arrayTeacher);
+    }catch(error){
+      console.log(error);
+    }
+  }
 
 
   showSelectedSubject(Subject)
@@ -40,8 +41,9 @@ export class ProviderUIPage implements OnInit {
 console.log(this.Subject);
    if(Subject=="Math")
    {
-     this.showProfNava = true;
-     this.showProfJoed = false;
+    this.getProviderType();
+    this.showProfMath = true;
+   
    }
    else if(Subject=="English")
    {
@@ -56,11 +58,11 @@ console.log(this.Subject);
 
   hireJoed()
   {
-    this.presentAlert();
+  
   }
   hireNava()
   {
-    this.presentAlert2();
+ 
   }
  
   async presentAlert() {

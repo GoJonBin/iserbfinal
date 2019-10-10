@@ -34,21 +34,21 @@
         </ion-select-option>
       </ion-select>
     </ion-item>
-    <div *ngIf="showProfNava">
+    <div *ngIf="showProfMath">
 
-      <ion-item>
-        <ion-avatar slot="start">
+      <ion-item *ngFor="let teacher of arrayTeacher; let idx = index;">
+        <!-- <ion-avatar slot="start">
           <img src="assets/img/navapogi.jpg">
-        </ion-avatar>
+        </ion-avatar> -->
         <ion-label>
-          <h2>Name: Dennis Nava</h2>
+          <h2>Name: {{arrayTeacher[idx].name}}</h2>
           <h3>Occupation: Teacher</h3>
-          <h3>Rate:<ion-icon name="cash"></ion-icon> P50,000</h3>
+          <h3>Rate:<ion-icon name="cash"></ion-icon>{{arrayTeacher[idx].Rate}}</h3>
           <p>Rating: <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon></p>
         <p style="color: blue" (click)="showAlert()">More Info</p>
-        <p>Status: </p><p style="color:red" *ngIf="userNava.status=='Pending'">{{userNava.status}}</p>
-        <p style="color:green" *ngIf="userNava.status == 'Available'">{{userNava.status}}</p>
-        <ion-button (click)="hireNava()">Hire</ion-button>
+        <p>Status: </p><p style="color:red" *ngIf="arrayTeacher[idx].status=='Pending'">{{arrayTeacher[idx].status}}</p>
+        <p style="color:green" *ngIf="arrayTeacher[idx].status == 'Online'">{{arrayTeacher[idx].status}}</p>
+        <ion-button (click)="hireButton()">Hire</ion-button>
         </ion-label>
       </ion-item>
 
