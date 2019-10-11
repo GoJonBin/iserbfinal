@@ -10,16 +10,21 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit{
+  dynamicColor: string;
   constructor(
     // private fb: Facebook,
     private nativeStorage: NativeStorage,
     public loadingController: LoadingController,
     private router: Router,
     //private googlePlus: GooglePlus
-  ) { }
+  ) { this.dynamicColor = 'blue';}
 
   user: any;
   userReady: boolean = false;
+
+  logouts(){
+    this.router.navigateByUrl('/home');
+  }
 
   async ngOnInit() {
     // const loading = await this.loadingController.create({

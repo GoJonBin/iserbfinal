@@ -6,8 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  dynamicColor: string;
   
   public servicesBoolean: boolean[] = new Array(4);
+  constructor(){
+    this.dynamicColor = 'blue';
+  }
   
 
   showHideAgriculture()

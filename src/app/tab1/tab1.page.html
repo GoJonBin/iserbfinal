@@ -1,84 +1,82 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
+<ion-header style="background-color:black;">
+    <ion-toolbar [color]="dynamicColor">
+    <ion-title style="color: white;">
       Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg-class">
     <ion-card class="welcome-card">
       <ion-card-header>
-        <ion-card-subtitle>Get Started
+        <ion-card-subtitle style="color:white;">Get Started
             <ion-img src="/assets/img/logo.png" style="width:30%; height: 30%; overflow: visible; float: right;">
             </ion-img></ion-card-subtitle>
         <ion-card-title>Welcome to iSerb </ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Now that your account has been created, you'll want to start out to use our features and components. Check out some of the services we offer below for next steps.</p>
+        <p style="color:white;">Now that your account has been created, you'll want to start out to use our features and components. Check out some of the services we offer below for next steps.</p>
       </ion-card-content>
     </ion-card>
+
+    <ion-card class="welcome-card">
+        <ion-item href="" (click)="showHideAgriculture()">
+          <ion-icon class="ion-md-time" name="leaf" slot="start"></ion-icon>
+          <ion-label>Agriculture</ion-label>
+        </ion-item>
+        <ion-card class="welcome-card" *ngIf="servicesBoolean[0]" >
+            <ion-card-content>
+              <p>Browse services regarding Agriculture such as Crop Harvesting etc.</p>
+              <ion-button color="primary" fill="outline" style="width:100%">Browse</ion-button>
+            </ion-card-content>
+          </ion-card>
     
-    <ion-list lines="true" >
-        
-      <ion-list-header>
-        <ion-label>Offered Services:</ion-label>
-      </ion-list-header>
-      <ion-item (click)="showHideAgriculture()">
-        <ion-icon slot="start" color="medium" name="leaf"></ion-icon>
-        <ion-label>Agriculture</ion-label>
-      </ion-item>
-      <ion-card class="welcome-card" *ngIf="servicesBoolean[0]" >
-          <ion-card-content>
-            <p>Browse services regarding Agriculture such as Crop Harvesting etc.</p>
-            <ion-button color="primary" fill="outline" style="width:100%">Browse</ion-button>
-          </ion-card-content>
-        </ion-card>
-      <ion-item (click)="showHideArchitecture()">
-        <ion-icon slot="start" color="medium" name="logo-designernews"></ion-icon>
-        <ion-label>Architecture and Design</ion-label>
-      </ion-item>
-      <ion-card class="welcome-card" *ngIf="servicesBoolean[1]">
-        
-          <ion-card-content>
-            <p>Browse services regarding Architecture and Design such as Building Infrastractures etc.</p>
-            <ion-button color="primary" fill="outline" style="width:100%">Browse</ion-button>
-          </ion-card-content>
-        </ion-card>
-      <ion-item  (click)="showHideBusiness()">
-        <ion-icon slot="start" color="medium" name="briefcase"></ion-icon>
-        <ion-label >Business</ion-label>
-      </ion-item>
-      <ion-card class="welcome-card" *ngIf="servicesBoolean[2]">
-      
-          <ion-card-content>
-            <p>Browse services regarding Business such as Business Planning etc.</p>
-            <ion-button color="primary" fill="outline" style="width:100%">Browse</ion-button>
-          </ion-card-content>
-        </ion-card>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="flask"></ion-icon>
-        <ion-label>Health Sciences</ion-label>
-      </ion-item>
-      <ion-item href="/provider-ui">
-        <ion-icon slot="start" color="medium" name="school"></ion-icon>
-        <ion-label>Education</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="construct"></ion-icon>
-        <ion-label>Engineering</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="people"></ion-icon>
-        <ion-label>Family and Consumer Care</ion-label>
-      </ion-item>
-      <ion-item href="/transpo">
-        <ion-icon slot="start" color="medium" name="car"></ion-icon>
-        <ion-label>Transportation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Other Errands</ion-label>
-      </ion-item>
-    </ion-list>
+        <ion-item class="ion-itemlist" href="" (click)="showHideArchitecture()">    
+          <ion-icon class="ion-md-time" name="logo-designernews" slot="start"></ion-icon>
+          <ion-label>Architecture and Design</ion-label>
+        </ion-item>
+        <ion-card style="background-color: white;" class="welcome-card" *ngIf="servicesBoolean[1]">
+            <ion-card-content>
+              <p style="color:white;">Browse services regarding Architecture and Design such as Building Infrastractures etc.</p>
+              <ion-button color="primary" fill="outline" style="width:100%">Browse</ion-button>
+            </ion-card-content>
+          </ion-card>
+    
+        <ion-item href="" (click)="showHideBusiness()">
+          <ion-icon class="ion-md-time" name="briefcase" slot="start"></ion-icon>
+          <ion-label>Business</ion-label>
+        </ion-item>
+
+        <ion-item href="">
+            <ion-icon class="ion-md-time" slot="start" name="flask"></ion-icon>
+            <ion-label>Health Sciences</ion-label>
+          </ion-item>
+          <ion-item href="/provider-ui">
+            <ion-icon class="ion-md-time" slot="start" name="school"></ion-icon>
+            <ion-label>Education</ion-label>
+          </ion-item>
+          <ion-item href="">
+            <ion-icon class="ion-md-time" slot="start" name="construct"></ion-icon>
+            <ion-label>Engineering</ion-label>
+          </ion-item>
+          <ion-item href="">
+            <ion-icon class="ion-md-time" slot="start" name="people"></ion-icon>
+            <ion-label>Family and Consumer Care</ion-label>
+          </ion-item>
+          <ion-item href="/transpo">
+            <ion-icon class="ion-md-time" slot="start" name="car"></ion-icon>
+            <ion-label>Transportation</ion-label>
+          </ion-item>
+          <ion-item href="https://ionicframework.com/docs/theming/basics">
+            <ion-icon class="ion-md-time" slot="start" name="build"></ion-icon>
+            <ion-label>Other Errands</ion-label>
+          </ion-item>
+      </ion-card>
+      <!-- <ion-card class="welcome-height">
+        <ion-item>
+          <ion-icon class="ion-md-time" name="person" slot="start"></ion-icon>
+          <ion-label>Confirm your Identity</ion-label>
+          
+        </ion-item>
+      </ion-card> -->
 </ion-content>

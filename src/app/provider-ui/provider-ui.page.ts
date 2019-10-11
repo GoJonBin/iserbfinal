@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ProviderUIPage implements OnInit {
   public arrayTeacher: any=[];
+  information:boolean=false;
   constructor(public alertController: AlertController, private router: Router) { }
   Subject: any;
   showProfMath: any;
@@ -17,7 +18,9 @@ export class ProviderUIPage implements OnInit {
   
  
  
- 
+ showAlert(){
+   this.information=!this.information;
+ }
   ngOnInit() {
     
    
@@ -25,7 +28,7 @@ export class ProviderUIPage implements OnInit {
 
   async getProviderType(){
     try{
-      const response = await axios.get(' http://nathdaaco123-001-site1.ctempurl.com/api/Provider/ServiceType?ServiceType=5');
+      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Provider/ServiceType?ServiceType=5');
       console.log(response);
       for(let x = 0; x< response.data.length; x++) {
         this.arrayTeacher.push({'name':response.data[x].Firstname +' '+ response.data[x].Lastname,'rate':response.data[x].Rate,'status':response.data[x].Status});

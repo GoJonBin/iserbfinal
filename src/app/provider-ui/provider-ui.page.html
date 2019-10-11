@@ -37,15 +37,19 @@
     <div *ngIf="showProfMath">
 
       <ion-item *ngFor="let teacher of arrayTeacher; let idx = index;">
-        <!-- <ion-avatar slot="start">
-          <img src="assets/img/navapogi.jpg">
-        </ion-avatar> -->
+        <ion-avatar slot="start">
+          <img src="assets/images/profilepic.jpg">
+        </ion-avatar>
         <ion-label>
           <h2>Name: {{arrayTeacher[idx].name}}</h2>
           <h3>Occupation: Teacher</h3>
           <h3>Rate:<ion-icon name="cash"></ion-icon>{{arrayTeacher[idx].Rate}}</h3>
           <p>Rating: <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon></p>
-        <p style="color: blue" (click)="showAlert()">More Info</p>
+        <button style="background-color:white;color: blue" (click)="showAlert()" clear>More Info</button>
+        <div *ngIf="information">
+          <p>Tesda Certificate - SAMPLE SERIAL</p>
+          <p>PRC Licensed - SAMPLE SERIAL</p>
+        </div>
         <p>Status: </p><p style="color:red" *ngIf="arrayTeacher[idx].status=='Pending'">{{arrayTeacher[idx].status}}</p>
         <p style="color:green" *ngIf="arrayTeacher[idx].status == 'Online'">{{arrayTeacher[idx].status}}</p>
         <ion-button (click)="hireButton()">Hire</ion-button>

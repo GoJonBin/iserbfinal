@@ -1,50 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
+<ion-header style="background-color:black;">
+    <ion-toolbar [color]="dynamicColor">
+    <ion-title style="color: white;">
       Payment
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content class="bg-class">
   <ion-card class="welcome-card">
     <ion-card-header>
-      <ion-card-subtitle class="textCenter">Your Balance</ion-card-subtitle>
-      <ion-card-title class="textBold">₱ 0.00</ion-card-title>
+      <ion-card-subtitle class="textCenter">Your Subscription Balance</ion-card-subtitle>
+      <ion-card-title class="textBold">{{balance}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <p class="textCenter">To continue enjoying your subscription</p>
       <p class="textCenter">Choose your preferable payment method</p>
     </ion-card-content>
   </ion-card>
   <ion-card class="welcome-card">
     <ion-item>
-      <ion-icon name="briefcase" slot="start"></ion-icon>
+      <ion-icon class="ion-md-time" name="briefcase" slot="start"></ion-icon>
       <ion-label>Top-Up</ion-label>
-      <ion-button fill="outline" slot="end">View</ion-button>
+      <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
     </ion-item>
 
     <ion-item>
-      <ion-icon name="card" slot="start"></ion-icon>
+      <ion-icon class="ion-md-time" name="card" slot="start"></ion-icon>
       <ion-label>Cards</ion-label>
-      <ion-button fill="outline" slot="end">View</ion-button>
+      <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
     </ion-item>
 
     <ion-item>
-      <ion-icon name="cash" slot="start"></ion-icon>
+      <ion-icon class="ion-md-time" name="cash" slot="start"></ion-icon>
       <ion-label>Cash In</ion-label>
-      <ion-button fill="outline" slot="end">View</ion-button>
+      <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
     </ion-item>
 
     <ion-item>
-      <ion-icon name="medal" slot="start"></ion-icon>
+      <ion-icon class="ion-md-time" name="medal" slot="start"></ion-icon>
       <ion-label>Rewards</ion-label>
-      <ion-button fill="outline" slot="end">View</ion-button>
+      <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
     </ion-item>
   </ion-card>
-  <ion-card class="welcome-height">
+  <ion-card  class="welcome-height">
     <ion-item>
-      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-icon class="ion-md-time" name="person" slot="start"></ion-icon>
       <ion-label>Confirm your Identity</ion-label>
-      <ion-button fill="outline" slot="end">View</ion-button>
+      <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
     </ion-item>
   </ion-card>
 </ion-content>

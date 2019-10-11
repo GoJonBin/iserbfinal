@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { LoadingController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import axios from 'axios';
+import qs from 'qs';
 // import { Facebook } from '@ionic-native/facebook/ngx';
 
 @Component({
@@ -10,16 +13,22 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['pab3.page.scss']
 })
 export class Pab3Page implements OnInit{
+  dynamicColor: string;
+  status:any;
   constructor(
     // private fb: Facebook,
     private nativeStorage: NativeStorage,
     public loadingController: LoadingController,
     private router: Router,
+    public storage:Storage
     //private googlePlus: GooglePlus
-  ) { }
+  ) { this.dynamicColor = 'blue';}
 
   user: any;
   userReady: boolean = false;
+  hideOnline: boolean =false;
+  hideOffline: boolean =false;
+  hideBusy:boolean=false;
 
   logouts(){
     this.router.navigateByUrl('/home');
@@ -66,5 +75,42 @@ export class Pab3Page implements OnInit{
       console.log(err);
     });
   }*/
+
+  ionViewDidEnter(){
+    this.getCredits();
+  }
+
+  getCredits(){
+    this.storage.get('session').then((val) => {
+      this.getValidation(val);
+    });
+  }
+  
+
+  async getValidation(phoneNumber:string){
+    try{
+      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Provider/Credits?ContactNo='+phoneNumber);
+      
+      this.status = response.data[0].Status;
+      if(this.status=="Online"){
+        this.hideOnline=true;
+        this.hideOffline=false;
+        this.hideBusy=false;
+      }
+      else if(this.status=="Offline"){
+        this.hideOnline=false;
+        this.hideOffline=true;
+        this.hideBusy=false;
+      }
+      else{
+        this.hideOnline=false;
+        this.hideOffline=false;
+        this.hideBusy=true;
+      }
+      
+    }catch(error){
+      console.log(error);
+    }
+  }
 
 }

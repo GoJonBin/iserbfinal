@@ -1,16 +1,48 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
+<ion-header style="background-color:black;">
+    <ion-toolbar [color]="dynamicColor">
+    <ion-title style="color: white;">
       User Account
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-card class="welcome-card">
+<ion-content class="bg-class" padding>
+    <ion-avatar>
+        <img src="/assets/images/profilepic.jpg" style="width:100%; height: 100%;">
+      </ion-avatar>
+    <div *ngIf="hideOnline">
+      <ion-chip>
+        <ion-avatar>
+          <img src="/assets/images/online.jpg">
+        </ion-avatar>
+        <ion-label>Online</ion-label>
+      </ion-chip>
+    </div>
+    <div *ngIf="hideOffline">
+      <ion-chip>
+        <ion-avatar>
+          <img src="/assets/images/offline.jpg">
+        </ion-avatar>
+        <ion-label>Offline</ion-label>
+      </ion-chip>
+    </div>
+    <div *ngIf="hideBusy">
+      <ion-chip>
+        <ion-avatar>
+            <img src="/assets/images/busy.jpg">
+        </ion-avatar>
+        <ion-label>Busy</ion-label>
+      </ion-chip>
+    </div>
+      
+  <ion-card class="welcome-card">
   <ion-item (click)="logouts()">
-    
+      <ion-icon class="ion-md-time" name="log-out" slot="start"></ion-icon>
     <ion-label>Log out</ion-label>
     
   </ion-item>
+</ion-card>
+</ion-content>
+
 
   <!-- <ion-item>
     <ion-icon name="card" slot="start"></ion-icon>
@@ -29,7 +61,7 @@
     <ion-label>Rewards</ion-label>
     <ion-button fill="outline" slot="end">View</ion-button>
   </ion-item> -->
-</ion-card>
+
 
 
     <ion-content *ngIf='userReady'>

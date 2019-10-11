@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 //import { GooglePlus } from '@ionic-native/google-plus/ngx';
-import { Router } from '@angular/router';
+import { Router ,NavigationExtras } from '@angular/router';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { LoadingController, AlertController, Platform } from '@ionic/angular';
 import { environment } from '../../environments/environment';
@@ -21,6 +22,7 @@ export class HomePage
   public showPass:string = "lock";
   public typeNgPass: string = "password";
   _checkPhone:any;
+  
   // FB_APP_ID: number = 2392489640796829;
   constructor(
     // private fb: Facebook,
@@ -29,7 +31,8 @@ export class HomePage
     private router: Router,
     private platform: Platform,
     public alertController: AlertController,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private storage: Storage
   
   ) { }
 
@@ -118,6 +121,7 @@ export class HomePage
        message: 'Cordova is not available on desktop. Please try this in a real device or in an emulator.',
        buttons: ['OK']
      });
+     
 
     await alert.present();
   }
@@ -168,6 +172,7 @@ export class HomePage
     try{
       const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Login/GetCustomer?ContactNo='+this._checkPhone);
       let valid = response.data[0].UserExists;
+      this.storage.set('session', this._checkPhone);
       if(valid=="1"){
         this.router.navigateByUrl('/tabs');
       }
@@ -175,6 +180,7 @@ export class HomePage
         this.loginFailedToast();
       }
       else {
+        
         this.router.navigateByUrl('/pabs');
       }
       
