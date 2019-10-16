@@ -15,7 +15,10 @@ const routes: Routes = [
   { path: 'chat-web', loadChildren: './chat-web/chat-web.module#ChatWebPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'provider-ui', loadChildren: './provider-ui/provider-ui.module#ProviderUIPageModule' },
-  { path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule' }
+  { path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule' },
+  { path: 'settings-provider', loadChildren: './settings-provider/settings-provider.module#SettingsProviderPageModule' },
+  //{ path: 'provider-driver', loadChildren: './provider-driver/provider-driver.module#ProviderDriverPageModule' }
+  //{ path: 'privacy-policy', loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyPageModule' }
 ];
 
 @NgModule({

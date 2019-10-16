@@ -3,6 +3,8 @@ import { NavController } from '@ionic/angular';
 import Leaflet from 'leaflet';
 import 'leaflet-routing-machine';
 import 'leaflet-control-geocoder';
+import { ModalController } from '@ionic/angular';
+import { ProviderDriverPage } from '../provider-driver/provider-driver.page';
 
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 
@@ -45,8 +47,10 @@ export class TranspoPage {
   map: any;
 
   isenabled:boolean=true;
+  isenabledbook:boolean=false;
+  viewDrivers:boolean=true;
   
-  constructor(public navCtrl: NavController,private nativeGeocoder: NativeGeocoder) {
+  constructor(public navCtrl: NavController,private nativeGeocoder: NativeGeocoder,public modalController:ModalController) {
   }
  
 
@@ -94,13 +98,30 @@ export class TranspoPage {
   }
 
   confirmBooking(){
-    this.insertBooking();
+    //this.insertBooking();
+    this.isenabled=true;
+    this.isenabledbook=true;
+    this.viewDrivers=false;
+    this.presentModal();
   }
 
   cancelBooking(){
     this.isenabled=!this.isenabled;
-    this.getProviderLocation();
   }
+
+  booknow(){
+    this.isenabled=!this.isenabled;
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ProviderDriverPage
+    });
+    return await modal.present();
+    
+  }
+  
+  
 
 
   loadmap() {
@@ -114,7 +135,7 @@ export class TranspoPage {
     var list = "<dt>Name:JB Enriquez</dt>"
           + "<dt>Occupation:Driver</dt>"
           + '<a href="/chat-home">Chat</a>';
-       var marker = Leaflet.marker(latlng,{icon: kotse}).addTo(mymap).bindPopup(list);
+       //var marker = Leaflet.marker(latlng,{icon: kotse}).addTo(mymap).bindPopup(list);
        Leaflet.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmF0aGRhYWNvNzgiLCJhIjoiY2p0ajE1dGVwMGlkMzQ5bWRhdXNzbHluMiJ9.zA0f7OVGLu_j_iQ9fetATw', {
           attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',  
         zoom: 8,
@@ -130,7 +151,7 @@ export class TranspoPage {
        routingControl = Leaflet.Routing.control({
          waypoints: [
                 Leaflet.latLng(latlng),
-                Leaflet.latLng(latlng),
+                //Leaflet.latLng(latlng),
                
           ], 
 

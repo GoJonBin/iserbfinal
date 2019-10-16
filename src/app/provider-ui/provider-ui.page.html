@@ -38,17 +38,21 @@
 
       <ion-item *ngFor="let teacher of arrayTeacher; let idx = index;">
         <ion-avatar slot="start">
-          <img src="assets/images/profilepic.jpg">
+          <img src="{{arrayTeacher[idx].ProfilePicture}}">
         </ion-avatar>
         <ion-label>
           <h2>Name: {{arrayTeacher[idx].name}}</h2>
           <h3>Occupation: Teacher</h3>
-          <h3>Rate:<ion-icon name="cash"></ion-icon>{{arrayTeacher[idx].Rate}}</h3>
-          <p>Rating: <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-half"></ion-icon></p>
+          <h3>Hourly Rate:<ion-icon name="cash"></ion-icon>{{arrayTeacher[idx].rateperhour}} </h3>
+          <p>Rating: <ion-icon *ngFor="let count of arrayTeacher" name="star"></ion-icon></p>
         <button style="background-color:white;color: blue" (click)="showAlert()" clear>More Info</button>
         <div *ngIf="information">
-          <p>Tesda Certificate - SAMPLE SERIAL</p>
-          <p>PRC Licensed - SAMPLE SERIAL</p>
+          <p>Contact : {{arrayTeacher[idx].ContactNo}}</p>
+          <p>{{arrayTeacher[idx].Certificate1}} - {{arrayTeacher[idx].SerialCertificate1}}</p>
+          <p>{{arrayTeacher[idx].Certificate2}} - {{arrayTeacher[idx].SerialCertificate2}}</p>
+          <p>{{arrayTeacher[idx].Certificate3}} - {{arrayTeacher[idx].SerialCertificate3}}</p>
+          <p> Tesda Category - {{arrayTeacher[idx].TesdaCategory}}</p>
+          <p> Expertise - {{arrayTeacher[idx].Skills}}</p>
         </div>
         <p>Status: </p><p style="color:red" *ngIf="arrayTeacher[idx].status=='Pending'">{{arrayTeacher[idx].status}}</p>
         <p style="color:green" *ngIf="arrayTeacher[idx].status == 'Online'">{{arrayTeacher[idx].status}}</p>

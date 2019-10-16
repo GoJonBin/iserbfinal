@@ -15,6 +15,7 @@ import qs from 'qs';
 export class Pab3Page implements OnInit{
   dynamicColor: string;
   status:any;
+  fullname:string;
   constructor(
     // private fb: Facebook,
     private nativeStorage: NativeStorage,
@@ -83,9 +84,20 @@ export class Pab3Page implements OnInit{
   getCredits(){
     this.storage.get('session').then((val) => {
       this.getValidation(val);
+      this.getInformation(val);
     });
   }
-  
+
+
+  async getInformation(phoneNumber:string){
+    try{
+      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Registration/GetCustomerByPhoneNumber?ContactNo='+phoneNumber);
+      
+      this.fullname = response.data[0].Firstname +' '+response.data[0].Lastname;
+    }catch(error){
+      console.log(error);
+    }
+  }
 
   async getValidation(phoneNumber:string){
     try{

@@ -7,6 +7,8 @@ import {DatePicker} from '@ionic-native/date-picker/ngx';
 import axios from 'axios';
 import qs from 'qs';
 import { ToastController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { PrivacyPolicyPage } from '../privacy-policy/privacy-policy.page';
 
 @Component({
   selector: 'app-registration',
@@ -17,6 +19,8 @@ import { ToastController } from '@ionic/angular';
 export class RegistrationPage implements OnInit {
   
   regAs: any;
+  registrationbutton:boolean=false;
+  policybutton:boolean=true;
 
   currentIDPhoto: any;
   currentIDHandheld: any;
@@ -28,7 +32,7 @@ export class RegistrationPage implements OnInit {
   _gender;_birthdate;_phonenumber;numberChecker;_ids1;_ids2;_services;
   _firstname;_lastname;_middlename;_unitname;_streetname;_barangayname;_cityname;
   constructor(private datePicker: DatePicker,private camera: Camera,public formBuilder: FormBuilder,public router: Router,
-    public alertController: AlertController,public toastController: ToastController)  {
+    public alertController: AlertController,public toastController: ToastController,public modalController:ModalController)  {
    }
 
 
@@ -279,6 +283,21 @@ async getValidation(){
   }catch(error){
     console.log(error);
   }
+}
+
+async presentModal() {
+  const modal = await this.modalController.create({
+    component: PrivacyPolicyPage,
+    componentProps: {
+      'firstName': 'Douglas',
+      'lastName': 'Adams',
+      'middleInitial': 'N'
+    }
+  });
+  this.registrationbutton=true;
+  this.policybutton=false;
+  return await modal.present();
+  
 }
 
 

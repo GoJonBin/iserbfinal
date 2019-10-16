@@ -162,7 +162,12 @@ Provider Details -->
       <ion-input type="text" [required]="true" color="dark" inputmode="text" ></ion-input>
     </ion-item>
   </ion-card>
-  <ion-row>
+
+  <button *ngIf="policybutton" style="background-color:#7db9e8;color: blue;font-weight: bold;font:30px;" (click)="presentModal()" clear>Read Privacy Policy</button>
+
+  <!--HANG-->
+  <div>
+  <ion-row *ngIf="registrationbutton">
     <ion-col>
       <ion-button class="log-google-button" color="danger" expand="block" (click)="onRegister()">
         Register
@@ -170,4 +175,5 @@ Provider Details -->
       </ion-button>
     </ion-col>
   </ion-row>
+</div>
 </ion-content>

@@ -31,7 +31,11 @@ export class ProviderUIPage implements OnInit {
       const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Provider/ServiceType?ServiceType=5');
       console.log(response);
       for(let x = 0; x< response.data.length; x++) {
-        this.arrayTeacher.push({'name':response.data[x].Firstname +' '+ response.data[x].Lastname,'rate':response.data[x].Rate,'status':response.data[x].Status});
+        this.arrayTeacher.push({'name':response.data[x].Firstname +' '+ response.data[x].Lastname,'rateperhour':response.data[x].RatePerHour,'status':response.data[x].Status,
+        'Certificate1':response.data[x].Certificate1,'Certificate2':response.data[x].Certificate2,'Certificate3':response.data[x].Certificate3,
+        'SerialCertificate1':response.data[x].SerialCertificate1,'SerialCertificate2':response.data[x].SerialCertificate2,'SerialCertificate3':response.data[x].SerialCertificate3,
+        'Skills':response.data[x].Skills,'TesdaCategory':response.data[x].TesdaCategory,'ProfilePicture':response.data[x].ProfilePicture,
+        'ContactNo':response.data[x].ContactNo,'Rating':response.data[x].Rating});
       }      
       console.log(this.arrayTeacher);
     }catch(error){

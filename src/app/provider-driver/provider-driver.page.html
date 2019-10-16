@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nearby Drivers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div *ngIf="showProfMath" style="height: 50px;">
+
+        <!-- <ion-item *ngFor="let teacher of arrayTeacher; let idx = index;">
+          <ion-avatar slot="start">
+            <img src="{{arrayTeacher[idx].ProfilePicture}}">
+          </ion-avatar>
+          <ion-label>
+            <h2>Name: {{arrayTeacher[idx].name}}</h2>
+            <h3>Occupation: Teacher</h3>
+            <h3>Hourly Rate:<ion-icon name="cash"></ion-icon>{{arrayTeacher[idx].rateperhour}} </h3>
+            <p>Rating: <ion-icon *ngFor="let count of arrayTeacher" name="star"></ion-icon></p>
+          <button style="background-color:white;color: blue" (click)="showAlert()" clear>More Info</button>
+          <div *ngIf="information">
+            <p>Contact : {{arrayTeacher[idx].ContactNo}}</p>
+            <p>{{arrayTeacher[idx].Certificate1}} - {{arrayTeacher[idx].SerialCertificate1}}</p>
+            <p>{{arrayTeacher[idx].Certificate2}} - {{arrayTeacher[idx].SerialCertificate2}}</p>
+            <p>{{arrayTeacher[idx].Certificate3}} - {{arrayTeacher[idx].SerialCertificate3}}</p>
+            <p> Tesda Category - {{arrayTeacher[idx].TesdaCategory}}</p>
+            <p> Expertise - {{arrayTeacher[idx].Skills}}</p>
+          </div>
+          <p>Status: </p><p style="color:red" *ngIf="arrayTeacher[idx].status=='Pending'">{{arrayTeacher[idx].status}}</p>
+          <p style="color:green" *ngIf="arrayTeacher[idx].status == 'Online'">{{arrayTeacher[idx].status}}</p>
+          <ion-button (click)="hireButton()">Hire</ion-button>
+          </ion-label>
+        </ion-item> -->
+
+        
+        <ion-list>
+        <ion-item>
+                <ion-avatar slot="start">
+                  <img src="assets/img/joed.jpeg">
+                </ion-avatar>
+                <ion-label>
+                  <h4>Name: Joed Lopez</h4>
+                  <h4>ETA: 10 mins.</h4>
+                  <h4>Flat Rate:<ion-icon name="cash"></ion-icon> ₱ 50.00/Km.</h4>
+                  <p>Rating: <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
+                  
+                  <ion-button (click)="hireJoed()">Hire</ion-button>
+                </ion-label>
+              </ion-item>
+              <ion-item>
+                    <ion-avatar slot="start">
+                      <img src="assets/img/joed.jpeg">
+                    </ion-avatar>
+                    <ion-label>
+                      <h4>Name: Joed Lopez</h4>
+                      <h4>ETA: 5 mins.</h4>
+                      <h4>Flat Rate:<ion-icon name="cash"></ion-icon> ₱ 60.00/Km.</h4>
+                      <p>Rating: <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></p>
+                      
+                      <ion-button (click)="hireJoed()">Hire</ion-button>
+                    </ion-label>
+                  </ion-item>
+            </ion-list>
+       
+  
+      </div>
+</ion-content>
+<ion-footer>
+    <ion-button name="back" id="back" color="danger" expand="block" (click)="push()">BACK</ion-button>
+</ion-footer>

@@ -19,6 +19,9 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
+import { TopupModalPageModule } from './topup-modal/topup-modal.module';
+import { PrivacyPolicyPageModule } from './privacy-policy/privacy-policy.module';
+import { ProviderDriverPageModule } from './provider-driver/provider-driver.module';
 
 
 //9/20/19
@@ -50,7 +53,7 @@ var config = {
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [HttpClientModule,BrowserModule,FormsModule, ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(config),AngularFirestoreModule.enablePersistence(),AngularFireAuthModule,IonicStorageModule.forRoot()],
+  imports: [HttpClientModule,BrowserModule,FormsModule, ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(config),AngularFirestoreModule.enablePersistence(),AngularFireAuthModule,IonicStorageModule.forRoot(),TopupModalPageModule,PrivacyPolicyPageModule,ProviderDriverPageModule],
   exports:[
     FormsModule,
     ReactiveFormsModule

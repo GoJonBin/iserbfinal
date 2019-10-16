@@ -8,6 +8,7 @@ import 'leaflet-control-geocoder';
 import axios from 'axios';
 import qs from 'qs';
 
+
 declare var L: any;
 var lng = 0;
 var lat = 0;
@@ -17,13 +18,13 @@ var mark1: any;
 var marker;
 var routeArray=new Array();
 var locations = [
-  ["HOTEL 101",14.535800,120.9880],
-  ["SHELL RESIDENCES",14.536900, 120.986400],
-  ["SM CORPORATE OFFICE",14.536400, 120.985000],
-  ["HERITAGE HOTEL",14.537000, 120.993600]
+  ["SEEKER 1",14.5376816,120.9798211],
+  ["SEEKER 2",14.540566, 120.9803733],
+  ["SEEKER 3",14.5414682, 120.9797863],
+  ["SEEKER 4",14.5394722, 120.9804113]
   ];
-  var buspin = L.icon({
-    iconUrl: '/assets/icon/BUSPIN.svg',
+  var tao = L.icon({
+    iconUrl: '/assets/icon/tao.jpg',
   
     iconSize:     [50, 50], 
     shadowSize:   [50, 64], 
@@ -40,6 +41,7 @@ export class Pab1Page {
   back:boolean=true;
   selection:boolean=false;
   dynamicColor: string;
+  ischecked:boolean=false;
   
   constructor(public navCtrl: NavController,
     public loadingController: LoadingController,
@@ -53,7 +55,6 @@ export class Pab1Page {
   ionViewDidEnter() {
      this.loadmap();
      this.storage.get('session').then((val) => {
-      console.log('Your age is', val);
     });
      
   }
@@ -78,7 +79,7 @@ export class Pab1Page {
     }).then((res)=>{
       res.present();
       res.onDidDismiss().then((dis) => {
-        this.findNearby();
+          this.findNearby();
       });
     });
   }
@@ -102,29 +103,9 @@ export class Pab1Page {
     mymap.removeLayer(mark1);
   }
 
-
-  async insertBooking(){
-    const data = {
-      Firstname:'Jun Ben',
-      Lastname:'Enriquez',
-      ContactNo:'09184223552'
-    }
-
-    axios({
-      method:'POST',
-      headers:{'content-type':'application/x-www-form-urlencoded'},
-      data: qs.stringify(data),
-      url:'http://nathdaaco123-001-site1.ctempurl.com/api/booking/AddNewBooking'
-    }).then(function(response){
-      console.log(response);
-    }).catch(function(error){
-      console.log(error);
-    });
-  }
-
   findNearby(){
       for (var i = 0; i < locations.length; i++) {
-        marker = new L.marker([locations[i][1],locations[i][2]],{icon:buspin})
+        marker = new L.marker([locations[i][1],locations[i][2]],{icon:tao})
           .bindPopup(locations[i][0])
           .addTo(mymap);
       }

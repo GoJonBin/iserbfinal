@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import axios from 'axios';
 import qs from 'qs';
+import { ModalController } from '@ionic/angular';
+import { TopupModalPage } from '../topup-modal/topup-modal.page';
 
 
 @Component({
@@ -12,7 +14,8 @@ import qs from 'qs';
 export class Pab2Page {
   dynamicColor: string;
   balance:any;
-  constructor(public storage:Storage){
+  constructor(public storage:Storage,
+    public modalController: ModalController){
     this.dynamicColor = 'blue';
 
   }
@@ -25,6 +28,18 @@ export class Pab2Page {
     this.storage.get('session').then((val) => {
       this.getValidation(val);
     });
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: TopupModalPage,
+      componentProps: {
+        'firstName': 'Douglas',
+        'lastName': 'Adams',
+        'middleInitial': 'N'
+      }
+    });
+    return await modal.present();
   }
   
 

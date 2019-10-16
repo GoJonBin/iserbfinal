@@ -1,0 +1,156 @@
+<ion-header style="background-color: black; color: white; padding-bottom: 1%; padding-top: 1%;">
+  <ion-row>
+       <ion-button (click)="back()" fill="clear" style="color: white;">
+            <ion-icon name="arrow-round-back"></ion-icon>
+        </ion-button>
+      <ion-title style="margin: auto;">Your Professional Profile</ion-title>
+  </ion-row>
+  </ion-header>
+<ion-content class="login-content bg-class" padding>
+    
+    <ion-card style="margin-left: 2px; background-color: white;"> 
+      <ion-card-content style="color: black">
+     <ion-card-title style="padding-top: 1%; padding-bottom: 1%;">
+       Full Name
+     </ion-card-title>
+     
+  <ion-item>
+      <ion-label position="floating" color="dark" >First Name</ion-label>
+      <ion-input type="text" [required]="true" color="dark" inputmode="text" [(ngModel)]="_firstname" ></ion-input>
+  </ion-item>
+  <p style="color:red; margin-top:1%;" *ngIf="validFirstName"> <ion-icon name="information-circle-outline"></ion-icon> Please Enter A Valid Name!</p>
+  <ion-item>
+      <ion-label position="floating" color="dark">Last Name</ion-label>
+      <ion-input type="text" [required]="true" color="dark" inputmode="text" [(ngModel)]="_lastname" ></ion-input>
+  </ion-item>
+  <p style="color:red; margin-top:1%;" *ngIf="validLastName"> <ion-icon name="information-circle-outline"></ion-icon> Please Enter A Valid Name!</p>
+  
+</ion-card-content>
+</ion-card>
+
+<!-- Address -->
+<ion-card style="margin-left: 2px; background-color: white;"> 
+    <ion-card-content style="color: black">
+   <ion-card-title style="padding-top: 1%; padding-bottom: 1%;">
+     Address
+   </ion-card-title>
+<ion-item>
+    <ion-input type="text" [required]="true" color="dark" inputmode="text" [(ngModel)]="_address" ></ion-input>
+</ion-item>
+</ion-card-content>
+</ion-card>
+
+<!-- Others -->
+<ion-card style="margin-left: 2px; background-color: white;"> 
+  <ion-card-content style="color: black">
+ <ion-card-title style="padding-top: 1%; padding-bottom: 1%;">
+  Others
+ </ion-card-title>
+ <!-- <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select value="notifications" interface="action-sheet" [(ngModel)]="_gender">
+      <ion-select-option value="Male">Male</ion-select-option>
+      <ion-select-option value="Female">Female</ion-select-option>
+    </ion-select>
+  </ion-item> -->
+  <ion-item>
+      <ion-label>Birthdate</ion-label>
+      <ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Select Date" [(ngModel)]="_birthdate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Phone Number:</ion-label>
+        <ion-input inputmode="number" maxLength="11" style="text-align: right" [(ngModel)]="_phonenumber" >
+        </ion-input>
+    </ion-item>
+
+</ion-card-content>
+</ion-card>
+
+<ion-card style="margin-left: 2px; background-color: white;"> 
+    <ion-card-content style="color: black">
+   <ion-card-title style="padding-top: 1%; padding-bottom: 1%;">
+    Expertise
+   </ion-card-title>
+   <!-- <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select value="notifications" interface="action-sheet" [(ngModel)]="_gender">
+        <ion-select-option value="Male">Male</ion-select-option>
+        <ion-select-option value="Female">Female</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+    <ion-item>
+        <ion-label>Fields</ion-label>
+        <ion-input type="text" [required]="true" color="dark" inputmode="text" style="text-align: right" [(ngModel)]="_skills" >
+          </ion-input>
+      </ion-item>
+     
+  
+  </ion-card-content>
+  </ion-card>
+
+
+  <ion-card style="margin-left: 2px; background-color: white;" >
+      <ion-card-content style="color: black">
+      <ion-card-title style="padding-top: 1%; padding-bottom: 1%;">
+        Certificates
+      </ion-card-title>
+      <ion-item>
+        <ion-label>Attachment 1:</ion-label>
+        <ion-input type="text" [required]="true" color="dark" inputmode="text" style="text-align: right" [(ngModel)]="_skills" >
+          </ion-input>
+        
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" color="dark">Serial Number</ion-label>
+        <ion-input type="text" [required]="true" color="dark" inputmode="text"></ion-input>
+      </ion-item>
+          
+            <ion-item>
+       Primary Attachment
+      <ion-img [src]="currentIDPhoto" *ngIf="currentIDPhoto" (click)="takePicture()" style="margin-left: auto;">
+      </ion-img>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Attachment 2:</ion-label>
+      <ion-input type="text" [required]="true" color="dark" inputmode="text" style="text-align: right" [(ngModel)]="_skills" >
+        </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" color="dark">Serial Number</ion-label>
+      <ion-input type="text" [required]="true" color="dark" inputmode="text"></ion-input>
+    </ion-item>
+    <ion-item>
+     Secondary Attachment
+      <ion-img [src]="currentIDHandheld" *ngIf="currentIDHandheld" (click)="takePicture2()" style="margin: auto;">
+      </ion-img>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Attachment 3:</ion-label>
+        <ion-input type="text" [required]="true" color="dark" inputmode="text" style="text-align: right" [(ngModel)]="_skills" >
+          </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" color="dark">Serial Number</ion-label>
+        <ion-input type="text" [required]="true" color="dark" inputmode="text"></ion-input>
+      </ion-item>
+      <ion-item>
+       Tertiary Attachment
+        <ion-img [src]="currentIDHandheld" *ngIf="currentIDHandheld" (click)="takePicture2()" style="margin: auto;">
+        </ion-img>
+      </ion-item>
+
+    </ion-card-content>
+  
+    </ion-card>
+
+  <ion-row>
+    <ion-col>
+      <ion-button class="log-google-button" color="danger" expand="block" (click)="onUpdate()">
+        SAVE PROFILE
+        <ion-icon name="arrow-round-forward" style="position: absolute; right: 5%;"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

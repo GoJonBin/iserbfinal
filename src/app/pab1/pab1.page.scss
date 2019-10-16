@@ -2,7 +2,10 @@
   max-height: 35vh;
   overflow: hidden;
 }
-
+.centers{
+  margin:auto;
+  text-align: center;
+}
 .login-content{
   --background: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 

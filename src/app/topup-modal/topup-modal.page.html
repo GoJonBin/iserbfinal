@@ -1,0 +1,41 @@
+<ion-header style="background-color: black; color: white; padding-bottom: 1%; padding-top: 1%;">
+    <ion-row>
+         <ion-button fill="clear" style="color: white;" (click)="dismiss()">
+              <ion-icon name="arrow-round-back"></ion-icon>
+          </ion-button>
+        <ion-title style="margin: auto;">Top-Up</ion-title>
+    </ion-row>
+    </ion-header>
+  <ion-content class="login-content bg-class" padding>
+      
+      <ion-card style="margin-left: 2px; background-color: white;"> 
+        <ion-card-content style="color: black">
+       <ion-card-title style="padding-top: 1%; padding-bottom: 1%;">
+        Top Up Details 
+       </ion-card-title>
+       
+    <ion-item>
+        <ion-label position="floating" color="dark" >Receipt Number</ion-label>
+        <ion-input type="text" [required]="true" color="dark" inputmode="text" [(ngModel)]="_receiptnumber"  ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating" color="dark">Amount in PHP</ion-label>
+        <ion-input type="number" [required]="true" color="dark" inputmode="text" [(ngModel)]="_amount"  ></ion-input>
+    </ion-item>
+    
+  </ion-card-content>
+  </ion-card>
+
+
+
+
+    <ion-row>
+      <ion-col>
+        <ion-button class="log-google-button" color="danger" expand="block" (click)="dismiss()">
+          TOP UP
+          <ion-icon name="arrow-round-forward" style="position: absolute; right: 5%;"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+  
