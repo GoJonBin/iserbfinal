@@ -10,6 +10,12 @@
   <div id='map'></div>
 </ion-content>
 <ion-footer>
+  <div class="seekers" [hidden]="enablednotification">
+    <ion-button id="button1" (click)="presentModal()">
+      <ion-icon name="people"></ion-icon>
+      <ion-badge id="badge1" color="danger">1</ion-badge>
+    </ion-button>
+  </div>
   <div class="centers">
     <ion-toggle color="success" [(ngModel)]="ischecked" (click)="presentLoadingWithOptions()"></ion-toggle>
   </div>

@@ -13,10 +13,10 @@ const routes: Routes = [
   { path: 'chat-home', loadChildren: './chat-home/chat-home.module#ChatHomePageModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' },
   { path: 'chat-web', loadChildren: './chat-web/chat-web.module#ChatWebPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'provider-ui', loadChildren: './provider-ui/provider-ui.module#ProviderUIPageModule' },
   { path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule' },
   { path: 'settings-provider', loadChildren: './settings-provider/settings-provider.module#SettingsProviderPageModule' },
+  { path: 'seeker-list', loadChildren: './seeker-list/seeker-list.module#SeekerListPageModule' },
   //{ path: 'provider-driver', loadChildren: './provider-driver/provider-driver.module#ProviderDriverPageModule' }
   //{ path: 'privacy-policy', loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyPageModule' }
 ];

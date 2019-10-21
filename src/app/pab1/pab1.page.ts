@@ -7,6 +7,9 @@ import 'leaflet-routing-machine';
 import 'leaflet-control-geocoder';
 import axios from 'axios';
 import qs from 'qs';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { ModalController } from '@ionic/angular';
+import { SeekerListPage } from '../seeker-list/seeker-list.page';
 
 
 declare var L: any;
@@ -42,11 +45,15 @@ export class Pab1Page {
   selection:boolean=false;
   dynamicColor: string;
   ischecked:boolean=false;
+  enablednotification:boolean=true;
+  public arraySeeker: any=[];
+  ifseekername:string;
   
   constructor(public navCtrl: NavController,
     public loadingController: LoadingController,
+    private localNotifications: LocalNotifications,
     private storage: Storage,
-    private route: ActivatedRoute, private router: Router) {
+    private route: ActivatedRoute, private router: Router,public modalController:ModalController) {
       this.dynamicColor = 'blue';
       
   }
@@ -54,10 +61,25 @@ export class Pab1Page {
 
   ionViewDidEnter() {
      this.loadmap();
+     this.jobOfferNotif();
+     
      this.storage.get('session').then((val) => {
+      this.getInformation(val);
     });
      
   }
+
+  jobOfferNotif(){
+    this.localNotifications.schedule({
+      title: 'Someone is hiring you',
+      text: 'Accept Job ?',
+      actions: [
+          { id: 'yes', title: 'Yes'  } ,
+          { id: 'no',  title: 'No' }
+      ]
+  });
+  }
+
   async afterGettingDestination(){
     if(routeArray[1].latLng==null)
     {
@@ -113,6 +135,33 @@ export class Pab1Page {
       this.selection=true;
   }
 
+  async getInformation(id:any){
+    try{
+      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Location/GetServiceSeeker?ProviderPhoneNumber='+id);
+      for(let x = 0; x< response.data.length; x++) {
+        this.arraySeeker.push({
+          'fullname':response.data[x].SeekerName,
+          'contactno':response.data[x].ContactNo,
+          'address':response.data[x].Address,
+          'latitude':response.data[x].Latitude,
+          'longitude':response.data[x].Longitude,
+          'profilepicture':response.data[x].ProfilePicture});
+          this.ifseekername = this.arraySeeker[1].fullname;
+          console.log(this.ifseekername);
+          
+          if(this.ifseekername=='None'){
+            this.enablednotification=true;
+          }
+          else{
+            this.enablednotification=false;
+          }
+          
+      }
+    }catch(error){
+      console.log(error);
+    }
+  }
+
   loadmap() {
     navigator.geolocation.getCurrentPosition(function(location)
     {
@@ -141,5 +190,12 @@ export class Pab1Page {
       //   routeArray = routingControl.getWaypoints();
     });
    
+    }
+
+    async presentModal() {
+      const modal = await this.modalController.create({
+        component: SeekerListPage
+      });
+      return await modal.present();
     }
   }

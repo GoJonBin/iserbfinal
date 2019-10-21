@@ -32,12 +32,7 @@ export class Pab2Page {
 
   async presentModal() {
     const modal = await this.modalController.create({
-      component: TopupModalPage,
-      componentProps: {
-        'firstName': 'Douglas',
-        'lastName': 'Adams',
-        'middleInitial': 'N'
-      }
+      component: TopupModalPage
     });
     return await modal.present();
   }

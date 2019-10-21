@@ -42,8 +42,7 @@
         </ion-avatar>
         <ion-label>
           <h2>Name: {{arrayTeacher[idx].name}}</h2>
-          <h3>Occupation: Teacher</h3>
-          <h3>Hourly Rate:<ion-icon name="cash"></ion-icon>{{arrayTeacher[idx].rateperhour}} </h3>
+          <h3>Hourly Rate:<ion-icon name="cash"></ion-icon> {{arrayTeacher[idx].rateperhour}} </h3>
           <p>Rating: <ion-icon *ngFor="let count of arrayTeacher" name="star"></ion-icon></p>
         <button style="background-color:white;color: blue" (click)="showAlert()" clear>More Info</button>
         <div *ngIf="information">
@@ -54,9 +53,10 @@
           <p> Tesda Category - {{arrayTeacher[idx].TesdaCategory}}</p>
           <p> Expertise - {{arrayTeacher[idx].Skills}}</p>
         </div>
-        <p>Status: </p><p style="color:red" *ngIf="arrayTeacher[idx].status=='Pending'">{{arrayTeacher[idx].status}}</p>
+        <p>Status: </p><p style="color:red" *ngIf="arrayTeacher[idx].status=='Busy'">{{arrayTeacher[idx].status}}</p>
+        <p style="color:red" *ngIf="arrayTeacher[idx].status=='Pending'">{{arrayTeacher[idx].status}}</p>
         <p style="color:green" *ngIf="arrayTeacher[idx].status == 'Online'">{{arrayTeacher[idx].status}}</p>
-        <ion-button (click)="hireButton()">Hire</ion-button>
+        <ion-button *ngIf="arrayTeacher[idx].status=='Online'" (click)="hireButton(idx)">Hire</ion-button>
         </ion-label>
       </ion-item>
 

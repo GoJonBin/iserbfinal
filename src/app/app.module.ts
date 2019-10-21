@@ -22,6 +22,7 @@ import { BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 import { TopupModalPageModule } from './topup-modal/topup-modal.module';
 import { PrivacyPolicyPageModule } from './privacy-policy/privacy-policy.module';
 import { ProviderDriverPageModule } from './provider-driver/provider-driver.module';
+import { SeekerListPageModule } from './seeker-list/seeker-list.module';
 
 
 //9/20/19
@@ -36,6 +37,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 //9/23/19
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import { NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 
@@ -53,7 +55,7 @@ var config = {
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [HttpClientModule,BrowserModule,FormsModule, ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(config),AngularFirestoreModule.enablePersistence(),AngularFireAuthModule,IonicStorageModule.forRoot(),TopupModalPageModule,PrivacyPolicyPageModule,ProviderDriverPageModule],
+  imports: [HttpClientModule,BrowserModule,FormsModule, ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(config),AngularFirestoreModule.enablePersistence(),AngularFireAuthModule,IonicStorageModule.forRoot(),TopupModalPageModule,PrivacyPolicyPageModule,ProviderDriverPageModule,SeekerListPageModule],
   exports:[
     FormsModule,
     ReactiveFormsModule
@@ -67,6 +69,7 @@ var config = {
     Camera,
     Geolocation,
     NativeGeocoder,
+    LocalNotifications,
     
     HTTP,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy 
