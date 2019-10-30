@@ -17,6 +17,6 @@
     </ion-button>
   </div>
   <div class="centers">
-    <ion-toggle color="success" [(ngModel)]="ischecked" (click)="presentLoadingWithOptions()"></ion-toggle>
+    <ion-toggle color="success" [disabled]="disableNearby" [(ngModel)]="ischecked" (click)="presentLoadingWithOptions()"></ion-toggle>
   </div>
 </ion-footer>

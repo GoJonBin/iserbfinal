@@ -19,7 +19,7 @@
           <h3>Address:<ion-icon name="home"></ion-icon> {{arraySeeker[idx].address}} </h3>
           <p>Location:<ion-icon name="pin"></ion-icon> {{arraySeeker[idx].latitude}}, {{arraySeeker[idx].longitude}}</p>
        
-        <ion-button (click)="dismiss()">Accept</ion-button>
+        <ion-button [disabled]="acceptDisable" (click)="dismiss(idx)">Accept</ion-button>
         </ion-label>
       </ion-item>
     </ion-list>

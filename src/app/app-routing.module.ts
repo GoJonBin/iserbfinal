@@ -17,6 +17,8 @@ const routes: Routes = [
   { path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule' },
   { path: 'settings-provider', loadChildren: './settings-provider/settings-provider.module#SettingsProviderPageModule' },
   { path: 'seeker-list', loadChildren: './seeker-list/seeker-list.module#SeekerListPageModule' },
+  { path: 'provider-apply', loadChildren: './provider-apply/provider-apply.module#ProviderApplyPageModule' },
+  { path: 'seeker-transaction', loadChildren: './seeker-transaction/seeker-transaction.module#SeekerTransactionPageModule' },
   //{ path: 'provider-driver', loadChildren: './provider-driver/provider-driver.module#ProviderDriverPageModule' }
   //{ path: 'privacy-policy', loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyPageModule' }
 ];

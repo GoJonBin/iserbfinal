@@ -135,7 +135,7 @@ export class TranspoPage {
     var list = "<dt>Name:JB Enriquez</dt>"
           + "<dt>Occupation:Driver</dt>"
           + '<a href="/chat-home">Chat</a>';
-       //var marker = Leaflet.marker(latlng,{icon: kotse}).addTo(mymap).bindPopup(list);
+       var marker = Leaflet.marker(latlng,{icon: kotse}).addTo(mymap).bindPopup(list);
        Leaflet.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmF0aGRhYWNvNzgiLCJhIjoiY2p0ajE1dGVwMGlkMzQ5bWRhdXNzbHluMiJ9.zA0f7OVGLu_j_iQ9fetATw', {
           attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',  
         zoom: 8,

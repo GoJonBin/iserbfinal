@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Current Transaction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item [hidden]="TransactionInfo">
+        <ion-avatar slot="start">
+          <img src="{{profilepic}}">
+        </ion-avatar>
+        <p>Service Provider:<ion-icon name="person"></ion-icon> {{fullname}}</p>
+        <p>Contact No: <ion-icon name="call"></ion-icon> {{contactno}}</p>
+        <p>Occupation: <ion-icon name="school"></ion-icon> {{skills}}</p>
+        <p>Location: <ion-icon name="pin"></ion-icon> {{address}}</p>
+        <ion-label position="floating" >Feedback</ion-label>
+        <ion-textarea [(ngModel)]="_Feedback" color="dark" inputmode="text" type="text"></ion-textarea>
+        <ion-select placeholder="Rate" interface="action-sheet" [(ngModel)]="_Rate" (ionChange)="showSelectedSubject(Rate)">
+            <ion-select-option value="1">
+              1 star
+            </ion-select-option>
+            <ion-select-option value="2">
+              2 star
+            </ion-select-option>
+            <ion-select-option value="3">
+              3 star
+            </ion-select-option>
+            <ion-select-option value="4">
+              4 star
+            </ion-select-option>
+            <ion-select-option value="5">
+                5 star
+              </ion-select-option>
+          </ion-select>
+        <ion-button (click)="closingOut()">Close Out</ion-button>
+      </ion-item>
+
+
+</ion-content>

@@ -22,6 +22,7 @@ export class ProviderUIPage implements OnInit {
   myphone:string;
   responsecode:any;
   response:any;
+  transaction:any;
  
  showAlert(){
    this.information=!this.information;
@@ -68,6 +69,7 @@ export class ProviderUIPage implements OnInit {
     this.storage.get('session').then((val) => {
       this.getInformation(val);
       this.myphone=val;
+      this.checkIfHasCurrentTransaction(val);
     });
   }
 
@@ -84,6 +86,17 @@ export class ProviderUIPage implements OnInit {
     }
   }
 
+  async checkIfHasCurrentTransaction(phoneNumber:string){
+    try{
+      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Seeker/SeekerProcessCount?ContactNo='+phoneNumber);
+      
+      this.transaction = response.data[0].ProcessCount;
+      console.log(this.transaction);
+    }catch(error){
+      console.log(error);
+    }
+  }
+
 
   showSelectedSubject(Subject)
   {
@@ -92,16 +105,21 @@ console.log(this.Subject);
    {
     this.getProviderType();
     this.showProfMath = true;
+    this.showProfJoed = false;
    
    }
    else if(Subject=="English")
    {
      //this.showProfNava=false;
      this.showProfJoed=true;
+     this.showProfMath = false;
+     this.arrayTeacher.length=0;
    }
    else{
      //this.showProfNava=false;
      this.showProfJoed=false;
+     this.showProfMath=false;
+     this.arrayTeacher.length=0;
    }
   }
 
@@ -119,6 +137,17 @@ console.log(this.Subject);
       header: 'You already Hire this Provider',
       subHeader: 'wait for the approval',
       message: 'Please choose another provider to hire',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async presentAlert3() {
+    const alert = await this.alertController.create({
+      header: 'You have an ongoing transaction',
+      subHeader: 'wait until your transaction has finished/cancelled',
+      message: 'Please give a feedback in your transaction',
       buttons: ['OK']
     });
 
@@ -149,6 +178,9 @@ console.log(this.Subject);
                 console.log(this.response);
                 if(this.response=="400"){
                   this.presentAlert();
+                }
+                else if(this.transaction!="0"){
+                  this.presentAlert3();
                 }
                 else{
                   this.arrayTeacher[0].status=='Pending'
