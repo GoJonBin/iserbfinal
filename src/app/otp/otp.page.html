@@ -1,0 +1,38 @@
+<ion-content class="login-content bg-class" padding>
+  <ion-row>
+    <ion-col>
+      <ion-img src="/assets/img/logo.png" style="height: 150px; width:150px; margin:auto;"></ion-img>
+      <p class="description2" style="color: white">Integrated Service Expert Reservation and Booking Application</p>
+    </ion-col>
+  </ion-row>
+  <ion-row style="margin:auto">
+  <ion-img src="/assets/img/icon1.png" style="height: 50px; width:50px; margin:auto"></ion-img>
+  <ion-img src="/assets/img/icon2.png" style="height: 46px; width:46px;margin:auto"></ion-img>
+  <ion-img src="/assets/img/icon3.png" style="height: 44px; width:44px; margin:auto"></ion-img>
+  <ion-img src="/assets/img/icon4.png" style="height: 38px; width:38px;margin:auto"></ion-img>
+  <ion-img src="/assets/img/icon5.png" style="height: 38px; width:38px; margin:auto"></ion-img>
+  <ion-img src="/assets/img/icon6.png" style="height: 38px; width:38px; margin:auto"></ion-img>
+</ion-row>
+<br/>
+  <p class="description2">Enter Verification Code Sent To Your Phone</p>
+  <br>
+  <ion-card style="background-color: white;">
+    <ion-card-content style="padding: 2%">
+  <ion-item style="border-radius: 15px;">
+    <ion-label position="floating" >Code</ion-label>
+  
+      <ion-input color="dark" [(ngModel)]="_checkPhone" inputmode="numeric" maxlength="11" type="tel"><ion-icon name="contact" style="position: absolute; right:1%;"></ion-icon></ion-input>
+    <!-- <ion-button routerLink="/registration"><ion-icon name="arrow-round-forward"></ion-icon></ion-button> -->
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-button color="tertiary" (click)="getValidation()" expand="block">LOGIN</ion-button>
+    </ion-col>
+  </ion-row>
+
+     
+
+  </ion-card-content>
+</ion-card>
+  
+</ion-content>

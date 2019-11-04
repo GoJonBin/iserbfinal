@@ -159,7 +159,7 @@ export class HomePage
     });
     toast.present();
   }
-
+  
   async loginErrorToast() {
     const toast = await this.toastController.create({
       message: 'Error',

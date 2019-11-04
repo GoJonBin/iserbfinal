@@ -1,0 +1,70 @@
+.login-content{
+    --background: -webkit-linear-gradient(top, #2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+     
+  }
+    .bg-class{
+      --background: #2989d8; /* Old browsers */
+      --background: -moz-linear-gradient(top, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+      --background: -webkit-linear-gradient(top, #2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+      --background: linear-gradient(to bottom, #2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+    
+  
+  label#rounded{
+    border-radius:15px; 
+  }
+  
+  div#container{
+    width: 300px; 
+    margin-left:auto; 
+    margin-right: auto; 
+  }
+  
+  
+  
+    .logo {
+      color: white;
+      font-size: 64px;
+      font-weight: bold;
+      text-align: center;
+      padding-top: 50px;
+    }
+    
+    .description {
+      color: rgb(0, 0, 0);
+      font-size: 22px;
+      text-align: center;
+      font-family: 'Trebuchet MS';
+    }
+    
+    .description2 {
+      color: rgb(0, 0, 0);
+      font-size: 18px;
+      font-family: 'Trebuchet MS';
+      text-align: center;
+    }
+    
+    .log-register-button {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  
+    .log-fb-button {
+      margin-top: 40px;
+      font-weight: bold;
+    }
+    .log-google-button {
+      margin-top: 0px;
+      font-weight: bold;
+    }
+     
+    ion-input {
+      input {
+        text-align: right;
+        ::-webkit-input-placeholder {
+          text-align: right;
+        }
+      }
+    }
+  
+  
+    
