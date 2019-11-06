@@ -9,4 +9,11 @@
         <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">https://api.cashbee.ph/</domain>
     </domain-config>
+       <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">https://stioasys.com/</domain>
+    </domain-config>
+      <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">https://stioasys.com/sendSMS.php</domain>
+    </domain-config>
+    
 </network-security-config>

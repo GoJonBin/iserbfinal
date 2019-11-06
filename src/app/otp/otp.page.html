@@ -21,12 +21,13 @@
   <ion-item style="border-radius: 15px;">
     <ion-label position="floating" >Code</ion-label>
   
-      <ion-input color="dark" [(ngModel)]="_checkPhone" inputmode="numeric" maxlength="11" type="tel"><ion-icon name="contact" style="position: absolute; right:1%;"></ion-icon></ion-input>
+      <ion-input color="dark" [(ngModel)]="_checkCode" inputmode="numeric" maxlength="4" type="tel"><ion-icon name="contact" style="position: absolute; right:1%;"></ion-icon></ion-input>
     <!-- <ion-button routerLink="/registration"><ion-icon name="arrow-round-forward"></ion-icon></ion-button> -->
   </ion-item>
   <ion-row>
     <ion-col>
-      <ion-button color="tertiary" (click)="getValidation()" expand="block">LOGIN</ion-button>
+        <ion-button color="tertiary" (click)="sendOTP()" expand="block">SEND OTP</ion-button>
+      <ion-button color="tertiary" (click)="oneTimePassword()" expand="block">LOGIN</ion-button>
     </ion-col>
   </ion-row>
 

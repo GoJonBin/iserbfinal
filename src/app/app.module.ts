@@ -15,7 +15,11 @@ import { AppComponent } from './app.component';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-import { HTTP } from '@ionic-native/http/ngx';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Http, Response } from '@angular/http';
+import { HttpModule } from '@angular/http';
+
 import { Camera } from '@ionic-native/camera/ngx';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
@@ -35,8 +39,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 //9/23/19
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
+
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import { NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
@@ -55,7 +58,7 @@ var config = {
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [HttpClientModule,BrowserModule,FormsModule, ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(config),AngularFirestoreModule.enablePersistence(),AngularFireAuthModule,IonicStorageModule.forRoot(),TopupModalPageModule,PrivacyPolicyPageModule,ProviderDriverPageModule,SeekerListPageModule],
+  imports: [HttpModule,HttpClientModule,BrowserModule,FormsModule, ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(config),AngularFirestoreModule.enablePersistence(),AngularFireAuthModule,IonicStorageModule.forRoot(),TopupModalPageModule,PrivacyPolicyPageModule,ProviderDriverPageModule,SeekerListPageModule],
   exports:[
     FormsModule,
     ReactiveFormsModule
@@ -70,8 +73,8 @@ var config = {
     Geolocation,
     NativeGeocoder,
     LocalNotifications,
-    
-    HTTP,
+    HttpClient,
+    HttpClientModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy 
     }
   ],
