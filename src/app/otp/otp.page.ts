@@ -29,7 +29,7 @@ export class OtpPage implements OnInit {
     localStorage.setItem('OTP', Math.floor(1000 + Math.random() * 9000).toString());
 
     var link = 'https://stioasys.com/sendSMS.php';
-    var myData = JSON.stringify({OTP: localStorage.getItem('OTP')});
+    var myData = JSON.stringify({OTP: localStorage.getItem('OTP'), NUMBER: localStorage.getItem('phoneNum')});
     this.http.post(link, myData)
     .subscribe(data => {
     this.data.response = data["_body"]; 
