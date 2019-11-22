@@ -180,7 +180,6 @@ export class HomePage
         this.loginFailedToast();
       }
       else {
-        
         this.router.navigateByUrl('/pabs');
       }
       

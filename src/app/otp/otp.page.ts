@@ -33,6 +33,7 @@ export class OtpPage implements OnInit {
     this.http.post(link, myData)
     .subscribe(data => {
     this.data.response = data["_body"]; 
+    console.log(this.data.response);
      }, error => {
     console.log("Oooops!");
     });
