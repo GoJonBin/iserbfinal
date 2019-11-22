@@ -1,10 +1,10 @@
 
 <ion-content>
-
-        <!-- <div id="map" style="width:100%; height:100%;"></div> -->
-        <div id='map'></div>
-        </ion-content>
-        <ion-footer>
+    <ion-input type="text" color="dark" inputmode="text" [(ngModel)]="search_address" id="search_address" ></ion-input>
+    <ion-button id="searchbutton" (click)="searchDestination()">SEARCH</ion-button>
+    <div id='map_canvas'></div>
+</ion-content>
+        <!-- <ion-footer>
             <div class="centers" [hidden]="isenabled">
                 
                 <ion-button (click)="confirmBooking()">CONFIRM</ion-button>
@@ -14,4 +14,4 @@
             <ion-button [hidden]="viewDrivers" color="success" expand="block" (click)="presentModal()">VIEW DRIVER</ion-button>
 
             <ion-button name="back" id="back" color="tertiary" expand="block" (click)="push()">BACK</ion-button>
-        </ion-footer>
+        </ion-footer> -->

@@ -42,7 +42,7 @@ export class Tab3Page implements OnInit{
 
   async getInformation(phoneNumber:string){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Registration/GetCustomerByPhoneNumber?ContactNo='+phoneNumber);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Registration/GetCustomerByPhoneNumber?ContactNo='+phoneNumber);
       
       this.fullname = response.data[0].Firstname +' '+response.data[0].Lastname;
       console.log(this.fullname);

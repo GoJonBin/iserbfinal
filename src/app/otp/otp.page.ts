@@ -14,6 +14,7 @@ import { LoadingController, AlertController, Platform } from '@ionic/angular';
 })
 export class OtpPage implements OnInit {
   data:any = {};
+  _phonenumber:any;
   _checkCode:any;
   constructor(
     private nativeStorage: NativeStorage,
@@ -25,18 +26,50 @@ export class OtpPage implements OnInit {
   ngOnInit() {
   }
 
-  sendOTP() {
+  ionViewDidEnter() {
+    this.storage.get('session').then((val) => {
+     this._phonenumber='63'+val;
+   });
+   if(this._phonenumber!=""){
+     console.log("WALANG LAMAN ANG PHONE");
+   }
+   else{
+     console.log("MAY LAMAN ANG PHONE");
+   }
+   //this.sendOTP();
+ }
+
+  async sendOTP() {
     localStorage.setItem('OTP', Math.floor(1000 + Math.random() * 9000).toString());
 
+<<<<<<< HEAD
+    // var link = 'https://stioasys.com/sendSMS.php';
+    // var myData = JSON.stringify({OTP: localStorage.getItem('OTP')});
+    // this.http.post(link, myData)
+    // .subscribe(data => {
+    // this.data.response = data["_body"]; 
+    //  }, error => {
+    // console.log("Oooops!");
+    // });
+
+    try{
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/SendOTP/ByNumber?ContactNo='+this._phonenumber+'&Otp='+localStorage.getItem('OTP'));
+      console.log(response); 
+      console.log(this._phonenumber);   
+    }catch(error){
+      console.log(error);
+    }
+
+=======
     var link = 'https://stioasys.com/sendSMS.php';
     var myData = JSON.stringify({OTP: localStorage.getItem('OTP'), NUMBER: localStorage.getItem('phoneNum')});
     this.http.post(link, myData)
     .subscribe(data => {
     this.data.response = data["_body"]; 
-    console.log(this.data.response);
      }, error => {
     console.log("Oooops!");
     });
+>>>>>>> 288a233568a68b22b8d079ed16aed3f52853a1de
   }
   
   oneTimePassword() {

@@ -38,7 +38,7 @@ export class SeekerTransactionPage implements OnInit {
 
   async getInformation(phoneNumber:string){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Seeker/ProviderInformation?ContactNo='+phoneNumber);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Seeker/ProviderInformation?ContactNo='+phoneNumber);
       this.firstname = response.data[0].Firstname;
       this.fullname = response.data[0].Firstname +' '+response.data[0].Lastname;
       this.contactno = response.data[0].ContactNo;
@@ -70,7 +70,7 @@ export class SeekerTransactionPage implements OnInit {
             method:'POST',
             headers:{'content-type':'application/x-www-form-urlencoded'},
             data: qs.stringify(data),
-            url:'http://nathdaaco123-001-site1.ctempurl.com/api/Seeker/CloseOutTransaction'
+            url:'http://jbenriquez-001-site1.htempurl.com/api/Seeker/CloseOutTransaction'
           }).then(function(response){
             console.log(response.data);
             this.router.navigateByUrl('/tabs');
