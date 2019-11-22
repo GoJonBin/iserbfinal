@@ -42,7 +42,6 @@ export class OtpPage implements OnInit {
   async sendOTP() {
     localStorage.setItem('OTP', Math.floor(1000 + Math.random() * 9000).toString());
 
-<<<<<<< HEAD
     // var link = 'https://stioasys.com/sendSMS.php';
     // var myData = JSON.stringify({OTP: localStorage.getItem('OTP')});
     // this.http.post(link, myData)
@@ -60,16 +59,6 @@ export class OtpPage implements OnInit {
       console.log(error);
     }
 
-=======
-    var link = 'https://stioasys.com/sendSMS.php';
-    var myData = JSON.stringify({OTP: localStorage.getItem('OTP'), NUMBER: localStorage.getItem('phoneNum')});
-    this.http.post(link, myData)
-    .subscribe(data => {
-    this.data.response = data["_body"]; 
-     }, error => {
-    console.log("Oooops!");
-    });
->>>>>>> 288a233568a68b22b8d079ed16aed3f52853a1de
   }
   
   oneTimePassword() {

@@ -24,6 +24,160 @@ export class ProviderUIPage implements OnInit {
   response:any;
   transaction:any;
   isItemAvailable:boolean=false;
+  items:any;
+  
+
+  initializeItems(){ 
+    if(localStorage.getItem("category")=="agriculture") {
+      this.items = [
+        "Agricultural Crops Production"
+        ,"Animal Production (Poultry-Chicken)"
+        ,"Grains Production (Rice-Corn)"
+        ,"Handle Breeders Leading to Animal Production (Swine)"
+        ,"Handle Farrowing Sows and Suckling’s Leading to Animal Production (Swine)"
+        ,"Maintain Healthy Animal Environment Leading to Animal Production (Swine)"
+        ,"Organic Agriculture Production"
+        ,"Perform Nursery Operations (Leading to Agricultural Crops Production)"
+        ,"Plant Crops (Leading to Agricultural Crops Production)"
+        ,"Prepare land for Agricultural Crop Production (Leading to Agricultural Crops Production)"
+        ,"Produce Finishers Leading to Animal Production (Swine)"];
+    }
+    else if(localStorage.getItem("category")=="architecture") {
+  
+      this.items= [
+        "Building Plan/ Technical Drafting"
+        ,"Interior/ Exterior Design"];
+      }
+      else if(localStorage.getItem("category")=="automotive") {
+        this.items= [
+        ,"Automotive Servicing"
+        ,"Driving"
+        ,"Motorcycle/Small Engine Servicing"
+      ];
+      }
+      else if(localStorage.getItem("category")=="construction") {
+        
+        this.items= [
+       
+        "Carpentry"
+        ,"Construction Painting"
+        ,"Heavy Equipment Operation (Wheel Loader)"
+        ,"HEO (Bulldozer)"
+        ,"Masonry"
+        ,"Plumbing"
+        ,"PV Systems Installation"
+        ,"Shielded Metal Arc Welding (SMAW)"
+        ,"Technical Drafting"
+        ,"Tile Setting"
+        ,"Welding"
+      ];
+      }
+      else if(localStorage.getItem("category")=="education") {
+        
+        this.items= [
+        "Academic Tutor"
+        ,"Musical Instruments Coach"
+        ,"Sports Coach"
+        ,"Voice Coach"];
+      }
+      else if(localStorage.getItem("category")=="electronics") {
+        
+        this.items= [
+          "Electrical Installation and Maintenance"
+          ,"Electronics Products Assembly and Servicing"
+          ,"Mechatronics Servicing"];
+      }
+      else if(localStorage.getItem("category")=="garments") {
+        
+        this.items= [
+          "Dressmaking"
+        ,"Other garments"];
+      }
+      else if(localStorage.getItem("category")=="health") {
+        
+        this.items= [
+          "Beauty Care Services (Nail Care)"
+          ,"Caregiving" 
+          ,"Central Sterile Service"
+          ,"Emergency Medical Services"
+          ,"Hair and Makeup Stylist"
+          ,"Hair care services (barber)"
+          ,"Health Care Services"
+          ,"Hilot/ Wellness Massage"
+          ,"Massage Therapy"
+          ,"Medical Transcription"
+          ,"Ophthalmic Lens Services"
+          ,"Pharmacy Services"];
+      }
+      else if(localStorage.getItem("category")=="ict") {
+        
+        this.items= [
+          "Administrative Support & Data encoding"
+          ,"Computer Systems Servicing"
+          ,"Contact Center Services"
+          ,"Creative Web Design"
+          ,"Personal/ Virtual Assistance"];
+      }
+      else if(localStorage.getItem("category")=="languages") {
+        
+        this.items= [
+          "Basic Japanese Language"
+          ,"Basic Spanish Language for Different Vocation"
+          ,"English Language Proficiency"
+          ,"ESL - Intensive English Course"
+          ,"Japanese Language, Japanese Culture and Work Ethics Nihongo"
+          ,"Other languages"];
+      }
+      else if(localStorage.getItem("category")=="metals") {
+        
+        this.items= [
+          "Air Duct Services"
+        ,"Auto Engine Rebuilding "
+        ,"Automotive Body Painting Finishing"
+        ,"Automotive Body Repairing"
+        ,"Shielded Metal Arc Welding (SMAW)"
+        ,"Flux Cored Arc Welding (FCAW)"
+        ,"Gas Tungsten Arc Welding (GTAW)"];
+      }
+      else if(localStorage.getItem("category")=="tourism") {
+        
+        this.items= [
+          "Bread and Pastry Production"
+          ,"Cookery, Food and Beverage Services"
+          ,"Events Management Services"
+          ,"Food Processing"
+          ,"Front Office Services"
+          ,"Housekeeping"
+          ,"Tourism Promotion Services"
+          ,"Waiters, Bartenders and Food Handling"];
+      }
+      else if(localStorage.getItem("category")=="others") {
+        
+        this.items= [
+        "Artist, Commercial Models"
+        ,"Bills Payments, Cash Collection and Banking"
+        ,"Bookkeeping Services"
+        ,"Car Drivers, Truck Drivers and Bikers"
+        ,"Caretaker Services"
+        ,"Delivery, Relocation and Logistics"
+        ,"Domestic Works"
+        ,"Funeral Services"
+        ,"Janitorial Housekeeping"
+        ,"Marketing and Sales Support"
+        ,"Messenger errands"
+        ,"Packing and Sorting"
+        ,"Security Services"
+        ,"Septic tank siphoning"
+        ,"Shoe maker Services"
+        ,"Technical Maintenance Services"
+        ,"Videographers, Photographers, Post production"
+        ,"Wedding Planners"
+        ]; 
+      }
+      
+    }
+ 
+  
  
  showAlert(){
    this.information=!this.information;
@@ -226,14 +380,14 @@ console.log(this.Subject);
 
   getItems(ev: any) {
     // Reset items back to all of the items
-
+    this.initializeItems();
     // set val to the value of the searchbar
     const val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.isItemAvailable = true;
-      this.arrayTeacher = this.arrayTeacher.filter((item) => {
+      this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
     }

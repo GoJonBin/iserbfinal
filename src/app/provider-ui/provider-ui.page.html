@@ -6,14 +6,14 @@
   </style>
 <ion-header translucent>
     <ion-toolbar>
-      <ion-title>Education</ion-title>
+      <ion-title>Providers</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content fullscreen>
       <ion-searchbar type="text" debounce="500" (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list *ngIf="isItemAvailable">
-      <ion-list-header>
+      <!-- <ion-list-header>
         List Of Providers
       </ion-list-header>
     <ion-item>
@@ -34,6 +34,9 @@
           Makabayan
         </ion-select-option>
       </ion-select>
+    </ion-item> -->
+    <ion-item *ngFor="let item of items">
+      {{ item }}
     </ion-item>
     <div *ngIf="showProfMath">
 
