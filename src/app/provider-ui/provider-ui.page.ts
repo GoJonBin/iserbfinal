@@ -10,6 +10,7 @@ import qs from 'qs';
   templateUrl: './provider-ui.page.html',
   styleUrls: ['./provider-ui.page.scss'],
 })
+
 export class ProviderUIPage implements OnInit {
   public arrayTeacher: any=[];
   information:boolean=false;
@@ -25,6 +26,9 @@ export class ProviderUIPage implements OnInit {
   transaction:any;
   isItemAvailable:boolean=false;
   items:any;
+  selectedItem: any;
+  categoryID: string = localStorage.getItem("categoryID");
+
   
 
   initializeItems(){ 
@@ -376,6 +380,12 @@ console.log(this.Subject);
       });
 
     });
+  }
+
+ 
+  showClick(item) {
+    console.log(this.items[item]);
+    console.log(this.categoryID);
   }
 
   getItems(ev: any) {

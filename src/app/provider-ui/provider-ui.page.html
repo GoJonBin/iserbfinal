@@ -35,7 +35,7 @@
         </ion-select-option>
       </ion-select>
     </ion-item> -->
-    <ion-item *ngFor="let item of items">
+    <ion-item *ngFor="let item of items; let idx = index;" (click)="showClick(idx)" >
       {{ item }}
     </ion-item>
     <div *ngIf="showProfMath">

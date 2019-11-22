@@ -19,55 +19,68 @@ export class Tab1Page {
 
   education() {
     localStorage.setItem("category","education");
+    localStorage.setItem("categoryID","5");
     this.router.navigateByUrl('/provider-ui');
   }
   Agriculture() { 
     localStorage.setItem("category","agriculture");
+    localStorage.setItem("categoryID","1");
     this.router.navigateByUrl('/provider-ui');
   }
   architecture() { 
     localStorage.setItem("category","architecture");
+    localStorage.setItem("categoryID","2");
     this.router.navigateByUrl('/provider-ui');
   }
   automotive() { 
     localStorage.setItem("category","automotive");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","3");
   }
   construction() { 
     localStorage.setItem("category","construction");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","4");
   }
   electronics() { 
     localStorage.setItem("category","electronics");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","6");
   }
   garments() { 
     localStorage.setItem("category","garments");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","7");
   }
   health() { 
     localStorage.setItem("category","health");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","8");
   }
   ict() { 
     localStorage.setItem("category","ict");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","9");
   }
   languages() { 
     localStorage.setItem("category","languages");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","10");
   }
   metals() { 
     localStorage.setItem("category","metals");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","11");
   }
   tourism() { 
     localStorage.setItem("category","tourism");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","12");
   }
   others() { 
     localStorage.setItem("category","others");
     this.router.navigateByUrl('/provider-ui');
+    localStorage.setItem("categoryID","13");
   }
   
 
