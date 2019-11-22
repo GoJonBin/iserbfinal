@@ -37,6 +37,11 @@
    <ion-card-title style="padding-top: 1%; padding-bottom: 1%;">
      Address
    </ion-card-title>
+<ion-item >
+    <ion-label position="floating" color="dark">House/Unit No.</ion-label>
+    <ion-input type="text" [required]="true" color="dark" inputmode="text" [(ngModel)]="_unitname" (click)="onClickHouseNo()" ></ion-input>
+</ion-item>
+<p style="color:red; margin-top:1%;" *ngIf="validUnit"> <ion-icon name="information-circle-outline"></ion-icon> Please Enter House No.!</p>
 <ion-item>
     <ion-label position="floating" color="dark" >Street</ion-label>
     <ion-input type="text" [required]="true" color="dark" inputmode="text" [(ngModel)]="_streetname" (click)="onClickStreet()" ></ion-input>
@@ -47,12 +52,6 @@
     <ion-input type="text" [required]="true" color="dark" inputmode="text" [(ngModel)]="_barangayname" (click)="onClickBarangay()"></ion-input>
 </ion-item>
 <p style="color:red; margin-top:1%;" *ngIf="validBarangay"> <ion-icon name="information-circle-outline"></ion-icon> Please Enter Barangay Name!</p>
-
-<ion-item >
-    <ion-label position="floating" color="dark">House/Unit No.</ion-label>
-    <ion-input type="text" [required]="true" color="dark" inputmode="text" [(ngModel)]="_unitname" (click)="onClickHouseNo()" ></ion-input>
-</ion-item>
-<p style="color:red; margin-top:1%;" *ngIf="validUnit"> <ion-icon name="information-circle-outline"></ion-icon> Please Enter House No.!</p>
 
 <ion-item >
     <ion-label position="floating" color="dark">City</ion-label>
@@ -80,11 +79,11 @@
       <ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Select Date" [(ngModel)]="_birthdate"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label>Phone Number:</ion-label>
+      <ion-label>Phone Number: +63</ion-label>
     
         
     
-        <ion-input inputmode="number" maxLength="11" style="text-align: right" [(ngModel)]="_phonenumber">
+        <ion-input inputmode="number" maxLength="10" style="text-align: right" [(ngModel)]="_phonenumber">
           
         </ion-input>
       
@@ -149,17 +148,33 @@ Provider Details -->
   <ion-item>
       <ion-label position="floating" color="dark">Service to be provided:</ion-label>
       <ion-select placeholder="Select One" [(ngModel)]="_services">
-          <!-- <ion-select-option value="1">Agriculture</ion-select-option>
+          <ion-select-option value="1">Agriculture, Forestry and Fishery</ion-select-option>
           <ion-select-option value="2">Architecture and Design</ion-select-option>
-          <ion-select-option value="3">Business</ion-select-option>
-          <ion-select-option value="4">Health Sciences</ion-select-option> -->
+          <ion-select-option value="3">Automotive and Land Transportation</ion-select-option>
+          <ion-select-option value="4">Construction</ion-select-option>
           <ion-select-option value="5">Education</ion-select-option>
-          <!-- <ion-select-option value="6">Family and Consumer Care</ion-select-option> -->
-          <ion-select-option value="7">Transportation</ion-select-option>
-          <!-- <ion-select-option value="8">Other Errands</ion-select-option> -->
+          <ion-select-option value="6">Electrical and Electronics</ion-select-option>
+          <ion-select-option value="7">Garments</ion-select-option>
+          <ion-select-option value="8">Human Health and Consumer Care</ion-select-option>
+          <ion-select-option value="9">Information and Communication Technologies (ICT)</ion-select-option>
+          <ion-select-option value="10">Languages</ion-select-option>
+          <ion-select-option value="11">Metals and Engineering</ion-select-option>
+          <ion-select-option value="12">Tourism and HRM</ion-select-option>
+          <ion-select-option value="13">Social, Community Development Other Errands</ion-select-option>
+        </ion-select>
+        
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" color="dark">Service to be provided:</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="_subcategory">
+          <ion-select-option value="128">Academic Tutor</ion-select-option>
+          <ion-select-option value="129">Musical Instrument Coach</ion-select-option>
+          <ion-select-option value="130">Sports Coach</ion-select-option>
+          <ion-select-option value="131">Voice Coach</ion-select-option>
         </ion-select>
         <ion-label position="floating" color="dark">Specific Service(please specify):</ion-label>
-      <ion-input type="text" [required]="true" color="dark" inputmode="text" ></ion-input>
+      <ion-input [(ngModel)]="_specific" type="text" [required]="true" color="dark" inputmode="text" ></ion-input>
     </ion-item>
   </ion-card>
 

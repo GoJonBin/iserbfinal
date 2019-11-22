@@ -122,7 +122,7 @@ export class Pab1Page implements OnInit{
 
   async getProviderLocation(){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Location/GetServiceProvider');
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Location/GetServiceProvider');
       console.log(response.data[0].Latitude);
       console.log(response.data[0].Longitude);
       mark1=Leaflet.marker([response.data[0].Latitude,response.data[0].Longitude]).addTo(mymap).bindPopup("Provider");
@@ -147,7 +147,7 @@ export class Pab1Page implements OnInit{
 
   async getInformation(id:any){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Provider/SeekerCounts?ContactNo='+id);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Provider/SeekerCounts?ContactNo='+id);
       for(let x = 0; x< response.data.length; x++) {
         this.arraySeeker.push({
           'seekercounts':response.data[x].SeekerCounts
@@ -208,7 +208,7 @@ export class Pab1Page implements OnInit{
 
     async getValidation(phoneNumber:string){
       try{
-        const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Provider/Credits?ContactNo='+phoneNumber);
+        const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Provider/Credits?ContactNo='+phoneNumber);
         this.balance = response.data[0].Credit;
         this.providerstatus = response.data[0].Status;
         if(this.balance>=10 && this.providerstatus=='Online'){

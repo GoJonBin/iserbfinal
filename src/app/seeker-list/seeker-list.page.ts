@@ -40,7 +40,7 @@ export class SeekerListPage implements OnInit {
 
   async getInformation(id:any){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Location/GetServiceSeeker?ProviderPhoneNumber='+id);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Location/GetServiceSeeker?ProviderPhoneNumber='+id);
       for(let x = 0; x< response.data.length; x++) {
         this.arraySeeker.push({
           'fullname':response.data[x].SeekerName,
@@ -81,7 +81,7 @@ export class SeekerListPage implements OnInit {
         method:'POST',
         headers:{'content-type':'application/x-www-form-urlencoded'},
         data: qs.stringify(data),
-        url:'http://nathdaaco123-001-site1.ctempurl.com/api/Provider/AcceptSeeker'
+        url:'http://jbenriquez-001-site1.htempurl.com/api/Provider/AcceptSeeker'
       }).then(response=>{
         this.modalController.dismiss({
           'dismissed': true
@@ -96,7 +96,7 @@ export class SeekerListPage implements OnInit {
 
   async getValidation(phoneNumber:string){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Provider/Credits?ContactNo='+phoneNumber);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Provider/Credits?ContactNo='+phoneNumber);
       this.balance = response.data[0].Credit;
       this.status = response.data[0].Status;
       if(this.balance>=10){

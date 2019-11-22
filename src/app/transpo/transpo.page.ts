@@ -1,10 +1,12 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import Leaflet from 'leaflet';
 import 'leaflet-routing-machine';
 import 'leaflet-control-geocoder';
 import { ModalController } from '@ionic/angular';
 import { ProviderDriverPage } from '../provider-driver/provider-driver.page';
+import { GoogleMaps, GoogleMap, Environment, Geocoder, GeocoderResult } from '@ionic-native/google-maps/ngx';
+import { Platform } from '@ionic/angular';
 
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 
@@ -43,16 +45,22 @@ var tao = L.icon({
   styleUrls: ['transpo.page.scss'],
 })
 
-export class TranspoPage {
-  map: any;
+export class TranspoPage implements OnInit {
+  map: GoogleMap;
+  apikey:string="AIzaSyAax595ub9dRltgpdSB5aWPwGWjxUtMfMA";
+  search_address:any;
 
   isenabled:boolean=true;
   isenabledbook:boolean=false;
   viewDrivers:boolean=true;
   
-  constructor(public navCtrl: NavController,private nativeGeocoder: NativeGeocoder,public modalController:ModalController) {
+  constructor(private platform:Platform,public navCtrl: NavController,private nativeGeocoder: NativeGeocoder,public modalController:ModalController) {
   }
  
+  async ngOnInit(){
+    await this.platform.ready();
+    await this.loadmap();
+  }
 
   ionViewDidEnter() {
      this.loadmap();
@@ -64,7 +72,7 @@ export class TranspoPage {
 
   async getProviderLocation(){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Location/GetServiceProvider');
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Location/GetServiceProvider');
       console.log(response.data[0].Latitude);
       console.log(response.data[0].Longitude);
       mark1=Leaflet.marker([response.data[0].Latitude,response.data[0].Longitude],{icon: kotse}).addTo(mymap).bindPopup("Provider");
@@ -89,7 +97,7 @@ export class TranspoPage {
       method:'POST',
       headers:{'content-type':'application/x-www-form-urlencoded'},
       data: qs.stringify(data),
-      url:'http://nathdaaco123-001-site1.ctempurl.com/api/booking/AddNewBooking'
+      url:'http://jbenriquez-001-site1.htempurl.com/api/booking/AddNewBooking'
     }).then(function(response){
       console.log(response);
     }).catch(function(error){
@@ -120,80 +128,31 @@ export class TranspoPage {
     return await modal.present();
     
   }
-  
-  
 
 
+  searchDestination(){
+    Geocoder.geocode({
+      "address": this.search_address
+    })
+    .then((results:GeocoderResult[])=>{
+      console.log(results);
+
+      return this.map.addMarker({
+        'position': results[0].position,
+        'title': JSON.stringify(results[0].position)
+      })
+    })
+    .then()
+  }
+  
+  
   loadmap() {
- 
-      navigator.geolocation.getCurrentPosition(function(location)
-      {
-
-      mymap = Leaflet.map('map').setView([lat, lng], 18);  
-     latlng = new L.LatLng(location.coords.latitude,location.coords.longitude);
-       console.log(latlng);
-    var list = "<dt>Name:JB Enriquez</dt>"
-          + "<dt>Occupation:Driver</dt>"
-          + '<a href="/chat-home">Chat</a>';
-       var marker = Leaflet.marker(latlng,{icon: kotse}).addTo(mymap).bindPopup(list);
-       Leaflet.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmF0aGRhYWNvNzgiLCJhIjoiY2p0ajE1dGVwMGlkMzQ5bWRhdXNzbHluMiJ9.zA0f7OVGLu_j_iQ9fetATw', {
-          attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',  
-        zoom: 8,
-       maxZoom: 18,
-       minZoom: 4,
-       minResolution: 4891.96981025128,
-        maxResolution: 39135.75848201024,
-        doubleClickZoom: true,
-        center: latlng
-        }).addTo(mymap);
-       mymap.panTo(latlng);
-    
-       routingControl = Leaflet.Routing.control({
-         waypoints: [
-                Leaflet.latLng(latlng),
-                //Leaflet.latLng(latlng),
-               
-          ], 
-
-         routeWhileDragging: true,  
-         geocoder: Leaflet.Control.Geocoder.nominatim(),
-         fitSelectedRoutes:true
-        }).addTo(mymap);
-        var routeArray = new Array();
-        routeArray = routingControl.getWaypoints();
-        if(routeArray[1].latLng==null)
-        {
-          console.log("Walang Laman")
-        }
-        else
-        {
-          console.log("May Laman")
-        }
-        
-        
-     });
-     
-    }
-     
-
-  
- 
-    //  this.reverseMo();
-
-  
-// reverseMo()
-// {
-//   let options: NativeGeocoderOptions = {
-//     useLocale: true,
-//     maxResults: 5
-// };
-
-// this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, options)
-//   .then((result: NativeGeocoderResult[]) => console.log(JSON.stringify(result[0])))
-//   .catch((error: any) => console.log(error));
-
-  
-// }
+      Environment.setEnv({
+        'API_KEY_FOR_BROWSER_RELEASE':'',
+        'API_KEY_FOR_BROWSER_DEBUG':''
+      });
+      this.map = GoogleMaps.create('map_canvas');
+  }
   
 }
 

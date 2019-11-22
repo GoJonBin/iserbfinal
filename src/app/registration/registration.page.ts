@@ -9,6 +9,7 @@ import qs from 'qs';
 import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { PrivacyPolicyPage } from '../privacy-policy/privacy-policy.page';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-registration',
@@ -31,8 +32,10 @@ export class RegistrationPage implements OnInit {
   public loginForm: FormGroup;
   _gender;_birthdate;_phonenumber;numberChecker;_ids1;_ids2;_services;
   _firstname;_lastname;_middlename;_unitname;_streetname;_barangayname;_cityname;
+  _subcategory;_specific;
   constructor(private datePicker: DatePicker,private camera: Camera,public formBuilder: FormBuilder,public router: Router,
-    public alertController: AlertController,public toastController: ToastController,public modalController:ModalController)  {
+    public alertController: AlertController,public toastController: ToastController,public modalController:ModalController,
+    private storage: Storage)  {
    }
 
 
@@ -94,9 +97,36 @@ export class RegistrationPage implements OnInit {
     toast.present();
   }
 
+
+  async sendOTP(phones) {
+    localStorage.setItem('OTP', Math.floor(1000 + Math.random() * 9000).toString());
+
+    // var link = 'https://stioasys.com/sendSMS.php';
+    // var myData = JSON.stringify({OTP: localStorage.getItem('OTP')});
+    // this.http.post(link, myData)
+    // .subscribe(data => {
+    // this.data.response = data["_body"]; 
+    //  }, error => {
+    // console.log("Oooops!");
+    // });
+
+    try{
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/SendOTP/ByNumber?ContactNo='+phones+'&Otp='+localStorage.getItem('OTP'));
+      console.log(response);  
+    }catch(error){
+      console.log(error);
+    }
+
+  }
+
   onRegister() {
     this.checkName();
     this.checkAddress();
+    var dateFormat = this._birthdate.split('T')[0]; 
+    console.log(dateFormat);
+
+    this.storage.set('customertype', this.regAs);
+    this.storage.set('session', this._phonenumber);
 
      if(this.regAs=="2")
      {
@@ -106,37 +136,40 @@ export class RegistrationPage implements OnInit {
 
        this.getValidation().then((data)=>{
         let res = data;
+        console.log(res);
         if(res=="0"){
-
-        
           const data = 
           {
             Firstname:this._firstname,
+            Middlename:this._middlename,
             Lastname:this._lastname,
             ContactNo:this._phonenumber,
-            Birthday:this._birthdate,
-            CustomerType:this.regAs,
+            Birthday:dateFormat,
+            CustomerTypeId:this.regAs,
             Gender:this._gender,
-            Address:this._unitname+" "+this._streetname+","+this._barangayname+","+this._cityname,
+            CompleteAddress:this._unitname+" "+this._streetname+","+this._barangayname+","+this._cityname,
             Attachment1:this._ids1,
             Attachment2:this._ids2,
-            ServiceType:this._services
+            JobMainCategoryId:this._services,
+            JobSubCategoryId:this._subcategory,
+            Skills:this._specific
           }
   
           axios({
             method:'POST',
             headers:{'content-type':'application/x-www-form-urlencoded'},
             data: qs.stringify(data),
-            url:'http://nathdaaco123-001-site1.ctempurl.com/api/Registration/AddCustomer'
+            url:'http://jbenriquez-001-site1.htempurl.com/api/Registration/AddCustomerProvider'
           }).then(function(response){
             console.log(response.data);
-        
+            //this.router.navigateByUrl('/otp');
+            this.sendOTP(this._phonenumber);
           }).catch(function(error){
             console.log(error);
           });
   
           
-            this.router.navigateByUrl('/pabs');
+            //this.router.navigateByUrl('/otp');
           
          }
          else{
@@ -158,32 +191,36 @@ export class RegistrationPage implements OnInit {
 
         this.getValidation().then((data)=>{
           let res =data;
+          console.log(res);
 
           if(res=="0"){
             const dataSeeKer = 
         {
           Firstname:this._firstname,
           Lastname:this._lastname,
+          Middlename:this._middlename,
           ContactNo:this._phonenumber,
-          Birthday:this._birthdate,
-          CustomerType:this.regAs,
+          Birthday:dateFormat,
+          CustomerTypeId:this.regAs,
           Gender:this._gender,
-          Address:this._unitname+" "+this._streetname+","+this._barangayname+","+this._cityname
+          CompleteAddress:this._unitname+" "+this._streetname+","+this._barangayname+","+this._cityname
         }
 
         axios({
           method:'POST',
           headers:{'content-type':'application/x-www-form-urlencoded'},
           data: qs.stringify(dataSeeKer),
-          url:'http://nathdaaco123-001-site1.ctempurl.com/api/Registration/AddCustomerSeeker'
+          url:'http://jbenriquez-001-site1.htempurl.com/api/Registration/AddCustomerSeeker'
         }).then(function(response){
           console.log(response.data);
-      
+          this.sendOTP(this._phonenumber);
         }).catch(function(error){
           console.log(error);
         });
 
-        this.router.navigateByUrl('/tabs');
+        
+
+        //this.router.navigateByUrl('/otp');
           }
           else{
             this.loginErrorToast('Use Another Phone Number !');
@@ -276,10 +313,11 @@ onClickCity()
 
 async getValidation(){
   try{
-    const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Login/GetCustomer?ContactNo='+this._phonenumber);
+    const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Login/GetCustomer?ContactNo='+this._phonenumber);
     let valid = response.data[0].UserExists;
-    return valid;
     
+    console.log(valid);
+    return valid;
   }catch(error){
     console.log(error);
   }

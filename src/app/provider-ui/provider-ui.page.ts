@@ -23,6 +23,7 @@ export class ProviderUIPage implements OnInit {
   responsecode:any;
   response:any;
   transaction:any;
+  isItemAvailable:boolean=false;
  
  showAlert(){
    this.information=!this.information;
@@ -38,7 +39,7 @@ export class ProviderUIPage implements OnInit {
 
   async getProviderType(){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Provider/ServiceType?ServiceType=5');
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Provider/ServiceType?ServiceType=5');
       console.log(response);
       for(let x = 0; x< response.data.length; x++) {
         this.arrayTeacher.push({
@@ -76,7 +77,7 @@ export class ProviderUIPage implements OnInit {
 
   async getInformation(phoneNumber:string){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Registration/GetCustomerByPhoneNumber?ContactNo='+phoneNumber);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Registration/GetCustomerByPhoneNumber?ContactNo='+phoneNumber);
       
       this.fullname = response.data[0].Firstname +' '+response.data[0].Lastname;
       this.seekerphonenumber = response.data[0].ContactNo;
@@ -88,7 +89,7 @@ export class ProviderUIPage implements OnInit {
 
   async checkIfHasCurrentTransaction(phoneNumber:string){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Seeker/SeekerProcessCount?ContactNo='+phoneNumber);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Seeker/SeekerProcessCount?ContactNo='+phoneNumber);
       
       this.transaction = response.data[0].ProcessCount;
       console.log(this.transaction);
@@ -211,7 +212,7 @@ console.log(this.Subject);
         method:'POST',
         headers:{'content-type':'application/x-www-form-urlencoded'},
         data: qs.stringify(data),
-        url:'http://nathdaaco123-001-site1.ctempurl.com/api/Transaction/AddNewTransaction'
+        url:'http://jbenriquez-001-site1.htempurl.com/api/Transaction/AddNewTransaction'
       }).then(response=>{
         resolve(response);
         this.responsecode=response;
@@ -222,5 +223,21 @@ console.log(this.Subject);
 
     });
   }
+
+  getItems(ev: any) {
+    // Reset items back to all of the items
+
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.isItemAvailable = true;
+      this.arrayTeacher = this.arrayTeacher.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+    }
+  }
+
 }
 

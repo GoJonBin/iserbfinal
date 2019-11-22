@@ -11,7 +11,8 @@
   </ion-header>
 
   <ion-content fullscreen>
-    <ion-list>
+      <ion-searchbar type="text" debounce="500" (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list *ngIf="isItemAvailable">
       <ion-list-header>
         List Of Providers
       </ion-list-header>

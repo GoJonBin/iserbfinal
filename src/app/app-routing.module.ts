@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'seeker-list', loadChildren: './seeker-list/seeker-list.module#SeekerListPageModule' },
   { path: 'provider-apply', loadChildren: './provider-apply/provider-apply.module#ProviderApplyPageModule' },
   { path: 'seeker-transaction', loadChildren: './seeker-transaction/seeker-transaction.module#SeekerTransactionPageModule' },  { path: 'otp', loadChildren: './otp/otp.module#OtpPageModule' },
+  { path: 'sample-search', loadChildren: './sample-search/sample-search.module#SampleSearchPageModule' },
 
   //{ path: 'provider-driver', loadChildren: './provider-driver/provider-driver.module#ProviderDriverPageModule' }
   //{ path: 'privacy-policy', loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyPageModule' }

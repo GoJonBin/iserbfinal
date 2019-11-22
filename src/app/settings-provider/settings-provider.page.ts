@@ -42,7 +42,7 @@ export class SettingsProviderPage implements OnInit {
 
   async getInformation(phoneNumber:string){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Registration/GetCustomerByPhoneNumber?ContactNo='+phoneNumber);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Registration/GetCustomerByPhoneNumber?ContactNo='+phoneNumber);
       this._id = response.data[0].ID;
       this._firstname = response.data[0].Firstname; 
       this._lastname = response.data[0].Lastname;
@@ -72,7 +72,7 @@ export class SettingsProviderPage implements OnInit {
       method:'POST',
       headers:{'content-type':'application/x-www-form-urlencoded'},
       data: qs.stringify(data),
-      url:'http://nathdaaco123-001-site1.ctempurl.com/api/Provider/UpdateProfile'
+      url:'http://jbenriquez-001-site1.htempurl.com/api/Provider/UpdateProfile'
     }).then(function(response){
       console.log(response);
     }).catch(function(error){

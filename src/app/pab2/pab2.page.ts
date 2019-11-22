@@ -40,7 +40,7 @@ export class Pab2Page {
 
   async getValidation(phoneNumber:string){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Provider/Credits?ContactNo='+phoneNumber);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Provider/Credits?ContactNo='+phoneNumber);
       this.balance = "₱ "+response.data[0].Credit;
     }catch(error){
       console.log(error);

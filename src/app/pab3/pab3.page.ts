@@ -91,7 +91,7 @@ export class Pab3Page implements OnInit{
 
   async getInformation(phoneNumber:string){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Registration/GetCustomerByPhoneNumber?ContactNo='+phoneNumber);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Registration/GetCustomerByPhoneNumber?ContactNo='+phoneNumber);
       
       this.fullname = response.data[0].Firstname +' '+response.data[0].Lastname;
     }catch(error){
@@ -101,7 +101,7 @@ export class Pab3Page implements OnInit{
 
   async getValidation(phoneNumber:string){
     try{
-      const response = await axios.get('http://nathdaaco123-001-site1.ctempurl.com/api/Provider/Credits?ContactNo='+phoneNumber);
+      const response = await axios.get('http://jbenriquez-001-site1.htempurl.com/api/Provider/Credits?ContactNo='+phoneNumber);
       
       this.status = response.data[0].Status;
       if(this.status=="Online"){
